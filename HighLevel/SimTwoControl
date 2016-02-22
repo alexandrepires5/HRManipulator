@@ -1,0 +1,63 @@
+//GLOBAL CONSTANTS
+//-----------------------------------
+const
+  NumJoints = 12;
+//-----------------------------------
+
+//GLOBAL VARIABLES
+//-----------------------------------
+var
+  //d1, d2, d3: double;
+  PosJ: array[0..NumJoints - 1] of double;
+  New_PosJ: array[0..NumJoints - 1] of double;
+  RefJ: array[0..NumJoints - 1] of double;   //reference control
+  //ReqRefJ: array[0..NumJoints - 1] of double;
+  //seq, seqLen: integer;
+  //count: integer;
+  
+//-------------------------------------
+
+
+//Sends the current data from the Simulator to the external program
+procedure SendData
+var
+  i: integer;
+begin
+  for i := 0 to (NumJoints - 1) do begin
+      WriteUDPData('127.0.0.1', 9909, PosJ[i]);
+  end;
+end;
+
+//Receives data from the external program
+procedure ReceiveData
+var
+  i: integer
+begin
+  for i := 0 to (NumJoints - 1) do begin
+      New_PosJ = ReadUDPData();
+  end;
+
+end;
+
+//Sends and receives the data. Executes the control with the new data
+procedure MainControl
+var
+  i: integer
+begin
+  for i := 0 to (NumJoints - 1) do begin
+      PosJ[i] := GetAxisPos(0, i);
+  end;
+  
+  SendData();
+  ReceiveData();
+  
+  for i := 0 to (NumJoints - 1) do begin
+      SetAxisPosRef(0, i, New_PosJ[i]);
+  end;
+
+end;
+
+procedure Initialize;
+begin
+
+end;
