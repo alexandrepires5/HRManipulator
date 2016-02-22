@@ -1,0 +1,70 @@
+#include<iostream>
+#include<cmath>
+#include"Connection.h"
+
+using namespace std;
+
+//FUNCTION PROTOTYPES
+//SOME MAY NOT BE YET IMPLEMENTED
+//------------------------------------------------------------------------------------
+double CCD(double PosJ[Number_Joints], double new_PosJ[Number_Joints]);
+double Jacobian_Inverse(double PosJ[Number_Joints], double new_PosJ[Number_Joints]);
+double Newton_Euler(double PosJ[Number_Joints], double new_PosJ[Number_Joints]);
+double RFM(double PosJ[Number_Joints], double new_PosJ[Number_Joints]);
+void RRT();
+void PRM();
+void Inverse_Kinematics();
+void Path_Planner();
+void Manipulator_Control();
+//--------------------------------------------------------------------------------------
+
+
+int main()
+{
+	//probably initilize communications here...
+	Manipulator_Control();
+}
+
+double CCD(double PosJ[Number_Joints], double new_PosJ[Number_Joints])
+{
+	return;
+}
+
+double Jacobian_Inverse(double PosJ[Number_Joints], double new_PosJ[Number_Joints])
+{
+	return;
+}
+
+double Newton_Euler(double PosJ[Number_Joints], double new_PosJ[Number_Joints])
+{
+	return;
+}
+
+double RFM(double PosJ[Number_Joints], double new_PosJ[Number_Joints])
+{
+	return;
+}
+
+void RRT()
+{
+
+}
+
+void PRM()
+{
+
+}
+void Inverse_Kinematics()
+{
+
+}
+
+void Path_Planner()
+{
+
+}
+
+void Manipulator_Control()
+{
+
+}
