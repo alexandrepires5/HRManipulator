@@ -2,7 +2,7 @@
 #include<winsock2.h>
 
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
-#ifndef COMMUNICATION_H
+//#ifndef COMMUNICATION_H
 #define COMMUNICATION_H
 #define BUFLEN 512  //Max length of buffer
 #define PORT 9909   //The port on which to listen for incoming data
@@ -11,3 +11,4 @@ extern double PosJ[Number_Joints];
 
 void data_receive(sockaddr_in si_other, int slen, char buf[BUFLEN], int recv_len, SOCKET s);
 void data_send(sockaddr_in si_other, int slen, char buf[BUFLEN], int recv_len, SOCKET s);
+void initialize_comm();
