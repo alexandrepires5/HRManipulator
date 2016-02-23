@@ -31,8 +31,7 @@ void data_send(sockaddr_in si_other, int slen, char buf[BUFLEN], int recv_len, S
 	}*/
 }
 
-
-int main()
+void initialize_comm()
 {
 	SOCKET s;
 	struct sockaddr_in server, si_other;
@@ -87,6 +86,4 @@ int main()
 
 	closesocket(s);
 	WSACleanup();
-
-	return 0;
 }
