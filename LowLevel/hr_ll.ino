@@ -1,6 +1,6 @@
 /*
 Adafruit MotorShield
-I2C address test - testing 4 shields
+I2C address test - tested 4 shields
 */
 
 #include <Wire.h>
