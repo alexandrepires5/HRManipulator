@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E76D2CFE-B2B8-4A85-B3DD-FD79B63369C7}</ProjectGuid>
+    <RootNamespace>HRM_Version_Duo</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\EIGENDIR\eigen-eigen-07105f7124f9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Arm.h" />
+    <ClInclude Include="Exceptions.h" />
+    <ClInclude Include="FABRIK.h" />
+    <ClInclude Include="FK.h" />
+    <ClInclude Include="RFM.h" />
+    <ClInclude Include="Solvers.h" />
+    <ClInclude Include="Includes.h" />
+    <ClInclude Include="IK.h" />
+    <ClInclude Include="Inv_CCD.h" />
+    <ClInclude Include="Jac_PseudoInv.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Path_planner.h" />
+    <ClInclude Include="RRT.h" />
+    <ClInclude Include="RRT_star.h" />
+    <ClInclude Include="Segment.h" />
+    <ClInclude Include="Serial_comm.h" />
+    <ClInclude Include="UDP_comm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="Exceptions.cpp" />
+    <ClCompile Include="FABRIK.cpp" />
+    <ClCompile Include="FK.cpp" />
+    <ClCompile Include="IK.cpp" />
+    <ClCompile Include="Inv_CCD.cpp" />
+    <ClCompile Include="Jac_PseudoInv.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Path_planner.cpp" />
+    <ClCompile Include="RFM.cpp" />
+    <ClCompile Include="RRT.cpp" />
+    <ClCompile Include="RRT_star.cpp" />
+    <ClCompile Include="Segment.cpp" />
+    <ClCompile Include="Serial_comm.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="UDP_comm.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
