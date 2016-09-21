@@ -68,6 +68,41 @@ mg946r_horn_head_d2 = 3;
 //mg946r_horn_length = 39-7;
 /* ----------------------------- */
 
+/* ------ mg995 ------ */
+//servo dimensions
+mg995_total_height = 42;
+mg995_length = 40;
+mg995_partial_height_b = 27;
+mg995_partial_height_w = 3;
+mg995_width = 20; //D
+mg995_total_length = 54;
+mg995_height = 39;
+
+mg995_bottom_cylinder_diameter = 0.384*mg995_width; //sleeve
+//mg946r_bottom_cylinder_height = 4.8; //sleeve
+mg995_bottomhinge_hole = mg995_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+mg995_fixation_hole_x = 4;
+mg995_fixation_hole_y = 0;
+mg995_fixation_hole_z = 5;
+mg995_hole_diameter = 2.5;
+
+//horn
+
+mg995_horn_height = 4;
+mg995_horn_length = 19;
+mg995_horn_1stcircle = 10;
+mg995_horn_2ndcircle = 4;
+mg995_horn_bigscrew = 6;
+mg995_horn_smallscrew = 2;
+mg995_horn_smallscrew_length = 11;
+mg995_horn_head_d1 = 2;
+mg995_horn_head_d2 = 3;
+//mg946r_horn_length = 39-7;
+/* ----------------------------- */
+
+
 /* ------ hk15328 ------ */
 //servo dimensions
 hk15328_total_height = 43; //A
@@ -83,7 +118,7 @@ hk15328_bottom_cylinder_diameter = 0.384*hk15328_width; //sleeve
 hk15328_bottomhinge_hole = hk15328_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-hk15328_fixation_hole_x = ;
+/*hk15328_fixation_hole_x = ;
 hk15328_fixation_hole_y = ;
 hk15328_fixation_hole_z = ;
 hk15328_hole_diameter = ;
@@ -98,7 +133,7 @@ hk15328_horn_smallscrew = ;
 hk15328_horn_smallscrew_length = ;
 hk15328_horn_head_d1 = ;
 hk15328_horn_head_d2 = ;
-    
+*/    
 /* ----------------------------- */ 
 
 /* ------ tgys901d ------ */
@@ -113,11 +148,11 @@ tgys901d_bottom_cylinder_diameter = 0.384*tgys901d_width; //sleeve
 tgys901d_bottomhinge_hole = tgys901d_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-tgys901d_fixation_hole_x = ;
+/*tgys901d_fixation_hole_x = ;
 tgys901d_fixation_hole_y = ;
 tgys901d_fixation_hole_z = ;
 tgys901d_hole_diameter = ;
-
+*/
 //horn
 tgys901d_horn_height = 3;
 tgys901d_horn_1stcircle = 4.5;
@@ -176,11 +211,14 @@ xgd11hmb_bottom_cylinder_diameter = 0.384*xgd11hmb_width; //sleeve
 //xgd11hmb_bottom_cylinder_height = 4.8; //sleeve
 xgd11hmb_bottomhinge_hole = xgd11hmb_bottom_cylinder_diameter+0.4;
 
+
 //servo_fixation_holes
+/*
 xgd11hmb_fixation_hole_x = ;
 xgd11hmb_fixation_hole_y = ;
 xgd11hmb_fixation_hole_z = ;
 xgd11hmb_hole_diameter = ;
+*/
 
 //horn
 xgd11hmb_horn_height = 3;
