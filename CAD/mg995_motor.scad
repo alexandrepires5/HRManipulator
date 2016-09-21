@@ -8,7 +8,7 @@ motor_height = 39;
 motor_total_height = 42;
 motor_total_length = 54;
 
-motor_partial_height_b = 24;
+motor_partial_height_b = 27;
 motor_partial_height_w = 3;
 
 module motor_mg995(){
@@ -20,3 +20,5 @@ module motor_mg995(){
     translate([0,motor_length*1/2-9.5,motor_total_height/2+3]) rotate([0,0,$t*180])
         horn();
 }
+
+//motor_mg995();

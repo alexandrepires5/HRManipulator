@@ -157,23 +157,6 @@ module servo_hinge(hinge_servo = "mg995"){
 
 }
 
-
-
-
-
-
-
-
-module left_side(){
-    //rotate($t*360,0,0) 
-        translate([0,-mg995_length/3,0]) cube(size = [mg995_width,mg995_length/3,mg995_height], center = true);
-}
-
-
-module right_side(){
-    cube(size = [mg995_width,mg995_length*2/3,mg995_height], center = true);
-}
-
 module motor_sleeve(){
     //motor_mg995();
     //translate([0,-servo_L/2,servo_H/2-5]) rotate([90,0,-90])  
