@@ -5,10 +5,12 @@
 //servo dimensions
 s8330m_total_height = 57;
 s8330m_length = 59;
-
+s8330m_partial_height = 49.5;
 s8330m_width = 29; //D
 s8330m_total_length = 74;
-s8330m_height = 39;
+s8330m_height = 37;
+s8330m_height_fh = 4.5;
+s8330m_length_to_shaft = 12;
 
 s8330m_bottom_cylinder_diameter = 0.384*s8330m_width; //sleeve
 //s8330m_bottom_cylinder_height = 4.8; //sleeve
@@ -20,11 +22,15 @@ s8330m_fixation_hole_y = 0;
 s8330m_fixation_hole_z = 8.25;
 s8330m_hole_diameter = 2.5;
 
+//shaft dimensions
+s8330m_shaft_diameter = 7;
+s8330m_shaft_height = 7;
+
 //horn
 s8330m_horn_height = 4;
 s8330m_horn_1stcircle = 10;
 s8330m_horn_2ndcircle = 15;
-s8330m_horn_length = 34.5;
+s8330m_horn_length = 36.5;
 s8330m_horn_bigscrew = 10;
 s8330m_horn_smallscrew = 2;
 s8330m_horn_smallscrew_length =17;
@@ -37,12 +43,19 @@ s8330m_horn_head_d2 = 4;
 
 /* ------ mg946r ------ */
 //servo dimensions
-mg946r_total_height = 47.6;
+//servo dimensions
+mg946r_total_height = 45;
 mg946r_length = 40.3;
-
+mg946r_partial_height = 37.5;
 mg946r_width = 20; //D
 mg946r_total_length = 53.6;
-mg946r_height = 26.6;
+mg946r_height = 28;
+mg946r_height_fh = 2.5;
+mg946r_length_to_shaft = 8;
+
+//shaft dimensions
+mg946r_shaft_diameter = 6;
+mg946r_shaft_height = 4;
 
 mg946r_bottom_cylinder_diameter = 0.384*mg946r_width; //sleeve
 //mg946r_bottom_cylinder_height = 4.8; //sleeve
@@ -55,16 +68,15 @@ mg946r_fixation_hole_z = 5;
 mg946r_hole_diameter = 2.5;
 
 //horn
-
 mg946r_horn_height = 4;
-mg946r_horn_length = 32.5;
-mg946r_horn_1stcircle = 7;
-mg946r_horn_2ndcircle = 13;
+mg946r_horn_length = 33+1;
+mg946r_horn_1stcircle = 7+1;
+mg946r_horn_2ndcircle = 13+1;
 mg946r_horn_bigscrew = 6;
 mg946r_horn_smallscrew = 2;
 mg946r_horn_smallscrew_length = 19.5;
 mg946r_horn_head_d1 = 2;
-mg946r_horn_head_d2 = 3;
+mg946r_horn_head_d2 = 3;  
 //mg946r_horn_length = 39-7;
 /* ----------------------------- */
 
@@ -90,7 +102,7 @@ mg995_hole_diameter = 2.5;
 
 //horn
 
-mg995_horn_height = 4;
+mg995_horn_height = 4.5;
 mg995_horn_length = 19;
 mg995_horn_1stcircle = 10;
 mg995_horn_2ndcircle = 4;
@@ -105,35 +117,42 @@ mg995_horn_head_d2 = 3;
 
 /* ------ hk15328 ------ */
 //servo dimensions
-hk15328_total_height = 43; //A
-hk15328_length = 41; //B 
-
+//servo dimensions 
+/*hk15328_total_height = 43;
+hk15328_length = 41;
+hk15328_partial_height = ;
 hk15328_width = 20; //D
-hk15328_total_length = 55; //E
+hk15328_total_length = 55;
 hk15328_height = 27;
+hk15328_height_fh = ;
+hk15328_length_to_shaft = ;
 
+//shaft dimensions
+hk15328_shaft_diameter = ;
+hk15328_shaft_height = ;
 
 hk15328_bottom_cylinder_diameter = 0.384*hk15328_width; //sleeve
 //hk15328_bottom_cylinder_height = 4.8; //sleeve
 hk15328_bottomhinge_hole = hk15328_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-/*hk15328_fixation_hole_x = ;
-hk15328_fixation_hole_y = ;
+hk15328_fixation_hole_x = ;
+hk15328_fixation_hole_y = 0;
 hk15328_fixation_hole_z = ;
 hk15328_hole_diameter = ;
 
 //horn
 hk15328_horn_height = ;
-hk15328_horn_1stcircle = ;
-hk15328_horn_2ndcircle = ;
-hk15328_horn_length = ;
+hk15328_horn_length = +1;
+hk15328_horn_1stcircle = +1;
+hk15328_horn_2ndcircle = +1;
 hk15328_horn_bigscrew = ;
 hk15328_horn_smallscrew = ;
 hk15328_horn_smallscrew_length = ;
-hk15328_horn_head_d1 = ;
-hk15328_horn_head_d2 = ;
-*/    
+hk15328_horn_head_d1 = 2;
+hk15328_horn_head_d2 = 3;  /*
+//hk15328_horn_length = 39-7;
+/* ----------------------------- */  
 /* ----------------------------- */ 
 
 /* ------ tgys901d ------ */
@@ -232,3 +251,120 @@ xgd11hmb_horn_head_d1 = 2;
 xgd11hmb_horn_head_d2 = 3;
     
 /* ----------------------------- */ 
+
+/* ------ tss10mg ------ */
+//servo dimensions
+//servo dimensions 
+/*tss10mg_total_height = 43;
+tss10mg_length = 41;
+tss10mg_partial_height = ;
+tss10mg_width = 20; //D
+tss10mg_total_length = 55;
+tss10mg_height = 27;
+tss10mg_height_fh = ;
+tss10mg_length_to_shaft = ;
+
+//shaft dimensions
+tss10mg_shaft_diameter = ;
+tss10mg_shaft_height = ;
+
+tss10mg_bottom_cylinder_diameter = 0.384*tss10mg_width; //sleeve
+//tss10mg_bottom_cylinder_height = 4.8; //sleeve
+tss10mg_bottomhinge_hole = tss10mg_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+tss10mg_fixation_hole_x = ;
+tss10mg_fixation_hole_y = 0;
+tss10mg_fixation_hole_z = ;
+tss10mg_hole_diameter = ;
+
+//horn
+tss10mg_horn_height = ;
+tss10mg_horn_length = +1;
+tss10mg_horn_1stcircle = +1;
+tss10mg_horn_2ndcircle = +1;
+tss10mg_horn_bigscrew = ;
+tss10mg_horn_smallscrew = ;
+tss10mg_horn_smallscrew_length = ;
+tss10mg_horn_head_d1 = 2;
+tss10mg_horn_head_d2 = 3;  /*
+//tss10mg_horn_length = 39-7;
+/* ----------------------------- */
+
+/* ------ hd1160a ------ */
+//servo dimensions
+//servo dimensions 
+/*hd1160a_total_height = 43;
+hd1160a_length = 41;
+hd1160a_partial_height = ;
+hd1160a_width = 20; //D
+hd1160a_total_length = 55;
+hd1160a_height = 27;
+hd1160a_height_fh = ;
+hd1160a_length_to_shaft = ;
+
+//shaft dimensions
+hd1160a_shaft_diameter = ;
+hd1160a_shaft_height = ;
+
+hd1160a_bottom_cylinder_diameter = 0.384*hd1160a_width; //sleeve
+//hd1160a_bottom_cylinder_height = 4.8; //sleeve
+hd1160a_bottomhinge_hole = hd1160a_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+hd1160a_fixation_hole_x = ;
+hd1160a_fixation_hole_y = 0;
+hd1160a_fixation_hole_z = ;
+hd1160a_hole_diameter = ;
+
+//horn
+hd1160a_horn_height = ;
+hd1160a_horn_length = +1;
+hd1160a_horn_1stcircle = +1;
+hd1160a_horn_2ndcircle = +1;
+hd1160a_horn_bigscrew = ;
+hd1160a_horn_smallscrew = ;
+hd1160a_horn_smallscrew_length = ;
+hd1160a_horn_head_d1 = 2;
+hd1160a_horn_head_d2 = 3;  /*
+//hd1160a_horn_length = 39-7;
+/* ----------------------------- */
+
+/* ------ bb928 ------ */
+//servo dimensions
+//servo dimensions 
+/*bb928_total_height = 43;
+bb928_length = 41;
+bb928_partial_height = ;
+bb928_width = 20; //D
+bb928_total_length = 55;
+bb928_height = 27;
+bb928_height_fh = ;
+bb928_length_to_shaft = ;
+
+//shaft dimensions
+bb928_shaft_diameter = ;
+bb928_shaft_height = ;
+
+bb928_bottom_cylinder_diameter = 0.384*bb928_width; //sleeve
+//bb928_bottom_cylinder_height = 4.8; //sleeve
+bb928_bottomhinge_hole = bb928_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+bb928_fixation_hole_x = ;
+bb928_fixation_hole_y = 0;
+bb928_fixation_hole_z = ;
+bb928_hole_diameter = ;
+
+//horn
+bb928_horn_height = ;
+bb928_horn_length = +1;
+bb928_horn_1stcircle = +1;
+bb928_horn_2ndcircle = +1;
+bb928_horn_bigscrew = ;
+bb928_horn_smallscrew = ;
+bb928_horn_smallscrew_length = ;
+bb928_horn_head_d1 = 2;
+bb928_horn_head_d2 = 3;  /*
+//bb928_horn_length = 39-7;
+/* ----------------------------- */
