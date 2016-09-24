@@ -419,18 +419,19 @@ module hinge_sleeve_alt_sleeve_mg946r(screw){
         else servo_sleeve_mg946r(type = "bottom_hole", hole = "two");
     }
     
-    translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - 1.5 * support_width_sleeve - hinge_sleeve_dist, 0])
-    #cylinder(d = 2.5, h = 30, center = true, $fn =32);
-
-    translate([-17.1*abs(servo_axis_clear-servo_H)-13/16.5*servo_H, -servo_L - 1.5 * support_width_sleeve - hinge_sleeve_dist, 0])
-    #cylinder(d = 2.5, h = 30, center = true, $fn =32);
-
+//    translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - 1.5 * support_width_sleeve - hinge_sleeve_dist, 0])
+//    #cylinder(d = 2.5, h = 30, center = true, $fn =32);
+//
+//    translate([-17.1*abs(servo_axis_clear-servo_H)-13/16.5*servo_H, -servo_L - 1.5 * support_width_sleeve - hinge_sleeve_dist, 0])
+//    #cylinder(d = 2.5, h = 30, center = true, $fn =32);
+//
     translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
 
     translate([-17.1*abs(servo_axis_clear-servo_H)-13/16.5*servo_H, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
-  }
+    
+    }
 }
 
 
@@ -474,7 +475,7 @@ module servo_sleeve_hk15328(type = "side_hole", hole = "two"){
     
     support_width_sleeve = (hk15328_total_length - hk15328_length)/2 + 2;
     servo_L = hk15328_length + 0.9;
-    servo_H = hk15328_height + 0.5;
+    servo_H = hk15328_height;
     servo_fixation_hole_x = hk15328_fixation_hole_x ;
     servo_fixation_hole_y = hk15328_fixation_hole_y ;
     servo_fixation_hole_z = hk15328_fixation_hole_z ;
@@ -542,7 +543,7 @@ module servo_sleeve_hk15328(type = "side_hole", hole = "two"){
 	
 	  // Servo hinge
 	  //translate([-servo_L + 4.5,  -(servo_H + support_width_sleeve), 0])
-      translate([-servo_L + 8,  -(servo_H + support_width_sleeve), 0])
+      translate([-servo_L + 10.45,  -(servo_H + support_width_sleeve), 0])
 	  rotate([90, 0, 0])
 	  cylinder(d = servo_bottom_cylinder_diameter, h = support_width_hinge-1, $fn =32);
 	
@@ -555,8 +556,8 @@ module servo_hinge_hk15328(hinge_servo = "hk15328"){
     support_width_sleeve = (hk15328_total_length - hk15328_length)/2 + 2;
     support_z_hinge = hk15328_width + 0.25;
     support_width_hinge = (hk15328_total_length - hk15328_length)/2 + 2;
-    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 3);
-    servo_HTot = hk15328_total_height + 0.5; //A
+    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 7);
+    servo_HTot = hk15328_total_height + 2; //A
     bigscrew = hk15328_horn_bigscrew;
     smallscrew = hk15328_horn_smallscrew;
     smallscrew_length = hk15328_horn_smallscrew_length;
@@ -629,15 +630,17 @@ module hinge_sleeve_alt_hinge_hk15328(screw){
       translate([-17.1*abs(servo_axis_clear-servo_H), -servo_L - 2 * support_width_sleeve - hinge_sleeve_dist, 0]) rotate([0, 0, 90]) servo_hinge_hk15328();  
     }
 
-    for (i = [0:1]){
-    translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - (i+0.5) * support_width_sleeve - hinge_sleeve_dist, 0])
+    {
+    translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - (1.5) * support_width_sleeve - hinge_sleeve_dist, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
 
-    translate([-17.1*abs(servo_axis_clear-servo_H)-13/16.5*servo_H, -servo_L - (i+0.5) * support_width_sleeve - hinge_sleeve_dist, 0])
+    translate([-17.1*abs(servo_axis_clear-servo_H)-13/16.5*servo_H, -servo_L - (1.5) * support_width_sleeve - hinge_sleeve_dist, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
     }
   }
 }
+
+
 
 
 module hinge_sleeve_alt_sleeve_hk15328(screw){
@@ -648,7 +651,7 @@ module hinge_sleeve_alt_sleeve_hk15328(screw){
     servo_L = hk15328_length + 0.9;
     servo_H = hk15328_height + 0.5;
     support_z_sleeve = hk15328_width + 0.25;
-    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 3);
+    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 7);
     
   difference(){
     union(){
@@ -656,7 +659,7 @@ module hinge_sleeve_alt_sleeve_hk15328(screw){
       translate([-15.5*abs(servo_axis_clear-servo_H), -servo_L, 0])
       rotate([0, 0, -90])
         if(screw == "one") servo_sleeve_hk15328(type = "bottom", hole = "one");
-        else servo_sleevehk15328(type = "bottom_hole", hole = "two");
+        else servo_sleeve_hk15328(type = "bottom_hole", hole = "two");
     }
     
     translate([-17.1*abs(servo_axis_clear-servo_H)-5/16.5*servo_H, -servo_L - 1.5 * support_width_sleeve - hinge_sleeve_dist, 0])
@@ -682,12 +685,12 @@ module sleeve_hinge_hk15328(screw){
     servo_L = hk15328_length + 0.9;
     servo_H = hk15328_height + 0.5;
     support_z_sleeve = hk15328_width + 0.25;
-    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 3);
+    servo_axis_clear = (hk15328_horn_length -hk15328_horn_1stcircle/2 + 7);
     
     difference(){
       union(){
-         translate([-sleeve_hinge_size/2+2 + support_width_sleeve, -sleeve_hinge_dist/2 - servo_H - support_width_sleeve, 0])
-  cube([sleeve_hinge_size-6, sleeve_hinge_dist + 2, support_z_sleeve], center = true);
+         translate([-sleeve_hinge_size/2+5 + support_width_sleeve, -sleeve_hinge_dist/2 - servo_H - support_width_sleeve, 0])
+  cube([sleeve_hinge_size-12, sleeve_hinge_dist + 4, support_z_sleeve], center = true);
 
   translate([0, -servo_axis_clear - servo_H - 2 * support_width_hinge - sleeve_hinge_dist, 0]) 
     servo_hinge_hk15328();
@@ -966,26 +969,26 @@ module s8330m_final(){
 }
 
 module mg946r_final(){
-    /*motor_mg946r();
+    motor_mg946r();
     rotate([0,0,180*$t-90]) translate([-1,-47-19+17.5,109.5-199.5+199.5]) rotate([90,0,-90])
          color("white") hinge_sleeve_alt_hinge_mg946r();
     translate([0,-38.25+17.5,9-199.5+199.5]) rotate([90,0,-90])
          color("white") sleeve_hinge_mg946r("two");
-    translate([0,-60,-61.25]) rotate([90,0,-90])
-        */color("white") hinge_sleeve_alt_sleeve_mg946r();
-    /*translate([0,3,-100.5]) rotate([90,0,0])
-        motor_mg946r();*/
+    translate([0,-75.5,-80.05]) rotate([90,0,-90])
+        color("white") hinge_sleeve_alt_sleeve_mg946r();
+    translate([0,3,-100.5]) rotate([90,0,0])
+        motor_mg946r();
 }
 
 module hk15328_final(){
     motor_hk15328();
-    translate([0,0,0]) rotate([90,0-90])
+    translate([0,-64-2.45,90.5]) rotate([90,0,-90])
         color("white") hinge_sleeve_alt_hinge_hk15328();
-    translate([0,0,0]) rotate([90,0,-90])
+    translate([0,-21,8]) rotate([90,0,-90])
          color("white") sleeve_hinge_hk15328("two");
-    translate([0,0,0]) rotate([90,0,-90])
+    translate([0,-66.5,-70.5]) rotate([90,0,-90])
         color("white") hinge_sleeve_alt_sleeve_hk15328();
-    translate([0,0,0]) rotate([90,0,0])
+    translate([0,3.5,-91.5]) rotate([90,0,0])
         motor_hk15328();
 }
 
@@ -1064,11 +1067,11 @@ module bb928_final(){
 }*/
 
 module servo_render(){
-    //s8330m_final(); //HT
-    //translate([0,-17.5,-199.5]) rotate([0,0,0])
-        mg946r_final(); //MT1
-    
-    //hk15328_final(); //MT2
+//    s8330m_final(); //HT
+//    translate([0,-17.5,-199.5]) rotate([0,0,0])
+//        mg946r_final(); //MT1
+//    translate([0,-26.5,-375.3]) rotate([0,0,0])
+        hk15328_final(); //MT2
     //tss10mg_final(); //LT1
     //hd1160a_final(); //LT2
     //bb928_final(); //LT3

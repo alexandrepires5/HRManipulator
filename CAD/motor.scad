@@ -36,11 +36,14 @@ module motor_hk15328(){
          color("black") cube(size = [hk15328_width,hk15328_total_length,hk15328_height_fh], center = true);
     
     translate([0,hk15328_length*1/2-hk15328_length_to_shaft,hk15328_partial_height/2]) rotate([0,0,$t*180]) 
-        color("white") cylinder(d=hk15328_shaft_diameter, h=hk15328_shaft_height);     
+        color("yellow") cylinder(d=hk15328_shaft_diameter, h=hk15328_shaft_height);     
     
     translate([0,hk15328_length*1/2-hk15328_length_to_shaft,(hk15328_partial_height/2+4)]) rotate([0,0,$t*180])
         color("black") horn_hk15328();
 }
 
 //motor_mg946r();
-//translate([70,0,0]) motor_s8330m();
+//translate([70,0,0]) 
+//    motor_s8330m();
+//translate([-70,0,0])
+//    motor_hk15328();

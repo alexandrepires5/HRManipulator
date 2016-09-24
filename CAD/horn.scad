@@ -22,7 +22,7 @@ module horn_single_hk15328(){
   linear_extrude(height = hk15328_horn_height, center = false)
       hull(){
        translate([hk15328_horn_length- hk15328_horn_1stcircle/2, 0, 0]) circle(d = hk15328_horn_1stcircle, $fn = 32);
-       circle(d = hk15328_horn_2ndcircle, $fn = 32);
+       circle(d = 11, $fn = 32);
       }
 }
 
@@ -32,10 +32,11 @@ module horn_hk15328(){
         rotate([0, 0, 180*i])
         horn_single_hk15328();
     }
+    linear_extrude(height = hk15328_horn_height, center = false) circle(d = hk15328_horn_2ndcircle, $fn = 32);
 }
 
 //horn_s8330m();
 //translate([0,20,0]) 
 //    horn_mg946r();
-//translate([0,-20,0})
+//translate([0,-20,0])
 //    horn_hk15328();

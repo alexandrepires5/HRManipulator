@@ -117,40 +117,39 @@ mg995_horn_head_d2 = 3;
 
 /* ------ hk15328 ------ */
 //servo dimensions
-//servo dimensions 
-/*hk15328_total_height = 43;
+hk15328_total_height = 43;
 hk15328_length = 41;
-hk15328_partial_height = ;
+hk15328_partial_height = 37.5;
 hk15328_width = 20; //D
 hk15328_total_length = 55;
-hk15328_height = 27;
-hk15328_height_fh = ;
-hk15328_length_to_shaft = ;
+hk15328_height = 27.5;
+hk15328_height_fh = 2.5;
+hk15328_length_to_shaft = 10;
 
 //shaft dimensions
-hk15328_shaft_diameter = ;
-hk15328_shaft_height = ;
+hk15328_shaft_diameter = 6;
+hk15328_shaft_height = 4;
 
 hk15328_bottom_cylinder_diameter = 0.384*hk15328_width; //sleeve
 //hk15328_bottom_cylinder_height = 4.8; //sleeve
 hk15328_bottomhinge_hole = hk15328_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-hk15328_fixation_hole_x = ;
+hk15328_fixation_hole_x = 4;
 hk15328_fixation_hole_y = 0;
-hk15328_fixation_hole_z = ;
-hk15328_hole_diameter = ;
+hk15328_fixation_hole_z = 5;
+hk15328_hole_diameter = 2.5;
 
 //horn
-hk15328_horn_height = ;
-hk15328_horn_length = +1;
-hk15328_horn_1stcircle = +1;
-hk15328_horn_2ndcircle = +1;
-hk15328_horn_bigscrew = ;
-hk15328_horn_smallscrew = ;
-hk15328_horn_smallscrew_length = ;
+hk15328_horn_height = 4;
+hk15328_horn_length = 19+1;
+hk15328_horn_1stcircle = 5+1;
+hk15328_horn_2ndcircle = 13+1;
+hk15328_horn_bigscrew = 6;
+hk15328_horn_smallscrew = 2;
+hk15328_horn_smallscrew_length = 11;
 hk15328_horn_head_d1 = 2;
-hk15328_horn_head_d2 = 3;  /*
+hk15328_horn_head_d2 = 3;  
 //hk15328_horn_length = 39-7;
 /* ----------------------------- */  
 /* ----------------------------- */ 
