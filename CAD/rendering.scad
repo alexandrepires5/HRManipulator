@@ -60,6 +60,20 @@ module plate() {
     }
 }
 
+module plate_2(){
+    difference(){
+        union(){
+            cube([15,20,3], center = true);
+        }
+        union(){
+            translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
+            translate([5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+        }
+    }
+}
+
 module servo_sleeve_s8330m(type = "side_hole", hole = "one"){
  
     union(){
@@ -1311,7 +1325,7 @@ module s8330m_final(){
     motor_s8330m();
     translate([0,-30,12]) rotate([90,0,-90]) 
         color("white") sleeve_hinge_s8330m("two");
-    translate([0,18,31]) rotate([0,-90,180*$t-90]) 
+    translate([0,18,31]) rotate([0,-90,0]) 
         color("white")servo_hinge_s8330m();
     translate([0,1,-120]) rotate([90,0,0]) 
         motor_s8330m();
@@ -1321,7 +1335,8 @@ module s8330m_final(){
 
 module mg946r_final(){
     motor_mg946r();
-    rotate([0,0,180*$t-90]) translate([-1,-39,110]) rotate([90,0,-90])
+    //rotate([0,0,180*$t-90]) 
+    translate([-1,-39,110]) rotate([90,0,-90])
          color("white") hinge_sleeve_alt_hinge_mg946r();
     translate([0,-38.25+17.5,9-199.5+199.5]) rotate([90,0,-90])
          color("white") sleeve_hinge_mg946r("two");
@@ -1397,6 +1412,9 @@ module servo_render(){
     translate([0,0,-781.5])
         max3002_final(); //LT3
     
+    
+    translate([-17,23.3,-162.65]) rotate([90,0,90])
+        color("blue") plate_2();
 // ---------- special package ------------ //
     //mg995_final();
     //xgd11hmb_final();
@@ -1404,4 +1422,3 @@ module servo_render(){
 }
 
 servo_render();
-
