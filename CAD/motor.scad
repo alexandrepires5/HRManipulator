@@ -42,6 +42,22 @@ module motor_hk15328(){
         color("black") horn_hk15328();
 }
 
+module motor_hd1160a(){
+    color("black") cube(size = [hd1160a_width,hd1160a_length,hd1160a_partial_height], center = true);
+    
+    translate([0,0,(hd1160a_height - hd1160a_partial_height/2)+hd1160a_height_fh/2])
+         color("black") cube(size = [hd1160a_width,hd1160a_total_length,hd1160a_height_fh], center = true);
+    
+    translate([0,hd1160a_length*1/2-9, hd1160a_partial_height/2+1]) rotate([0,0,0]) 
+        color("yellow") cube(size = [hd1160a_width,18,2], center = true);   
+    
+    translate([0,hd1160a_length*1/2-hd1160a_length_to_shaft,hd1160a_partial_height/2+2]) rotate([0,0,$t*180]) 
+        color("yellow") cylinder(d=hd1160a_shaft_diameter, h=hd1160a_shaft_height);     
+    
+    translate([0,hd1160a_length*1/2-hd1160a_length_to_shaft,(hd1160a_partial_height/2+7)]) rotate([0,0,$t*180])
+        color("black") horn_hd1160a();
+}
+
 module motor_tss10mg(){
     color("black") cube(size = [tss10mg_width,tss10mg_length,tss10mg_partial_height], center = true);
     
@@ -58,6 +74,22 @@ module motor_tss10mg(){
         color("black") horn_tss10mg();
 }
 
+module motor_max3002(){
+    color("black") cube(size = [max3002_width,max3002_length,max3002_partial_height], center = true);
+    
+    translate([0,0,(max3002_height - max3002_partial_height/2)+max3002_height_fh/2]) 
+         color("black") cube(size = [max3002_width,max3002_total_length,max3002_height_fh], center = true);
+    
+    translate([0,max3002_length*1/2-max3002_length_to_shaft, max3002_partial_height/2]) rotate([0,0,$t*180]) 
+        color("yellow") cylinder(d=max3002_width, h=3.5, $fn=32);  
+    
+    translate([0,max3002_length*1/2-max3002_length_to_shaft,max3002_partial_height/2+3.5]) rotate([0,0,$t*180]) 
+        color("yellow") cylinder(d=max3002_shaft_diameter, h=max3002_shaft_height, $fn=32);     
+    
+    translate([0,max3002_length*1/2-max3002_length_to_shaft,(max3002_partial_height/2+6.5)]) rotate([0,0,$t*180])
+        color("black") horn_max3002();
+}
+
 //motor_mg946r();
 //translate([70,0,0]) 
 //    motor_s8330m();
@@ -65,3 +97,6 @@ module motor_tss10mg(){
 //    motor_hk15328();
 //translate([0,-70,0]);
 //    motor_tss10mg();
+//translate([0,70,0])
+//    motor_hd1160a();
+//motor_max3002();
