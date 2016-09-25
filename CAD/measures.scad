@@ -5,10 +5,12 @@
 //servo dimensions
 s8330m_total_height = 57;
 s8330m_length = 59;
-
+s8330m_partial_height = 49.5;
 s8330m_width = 29; //D
 s8330m_total_length = 74;
-s8330m_height = 39;
+s8330m_height = 37;
+s8330m_height_fh = 4.5;
+s8330m_length_to_shaft = 12;
 
 s8330m_bottom_cylinder_diameter = 0.384*s8330m_width; //sleeve
 //s8330m_bottom_cylinder_height = 4.8; //sleeve
@@ -16,15 +18,19 @@ s8830m_bottomhinge_hole = s8330m_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
 s8330m_fixation_hole_x = 5;
-s8330m_fixation_hole_y = 0;
+s8330m_fixation_hole_y = 5;
 s8330m_fixation_hole_z = 8.25;
 s8330m_hole_diameter = 2.5;
+
+//shaft dimensions
+s8330m_shaft_diameter = 7;
+s8330m_shaft_height = 7;
 
 //horn
 s8330m_horn_height = 4;
 s8330m_horn_1stcircle = 10;
 s8330m_horn_2ndcircle = 15;
-s8330m_horn_length = 34.5;
+s8330m_horn_length = 36.5;
 s8330m_horn_bigscrew = 10;
 s8330m_horn_smallscrew = 2;
 s8330m_horn_smallscrew_length =17;
@@ -37,12 +43,19 @@ s8330m_horn_head_d2 = 4;
 
 /* ------ mg946r ------ */
 //servo dimensions
-mg946r_total_height = 47.6;
+//servo dimensions
+mg946r_total_height = 45;
 mg946r_length = 40.3;
-
+mg946r_partial_height = 37.5;
 mg946r_width = 20; //D
 mg946r_total_length = 53.6;
-mg946r_height = 26.6;
+mg946r_height = 28;
+mg946r_height_fh = 2.5;
+mg946r_length_to_shaft = 8;
+
+//shaft dimensions
+mg946r_shaft_diameter = 6;
+mg946r_shaft_height = 5;
 
 mg946r_bottom_cylinder_diameter = 0.384*mg946r_width; //sleeve
 //mg946r_bottom_cylinder_height = 4.8; //sleeve
@@ -55,16 +68,15 @@ mg946r_fixation_hole_z = 5;
 mg946r_hole_diameter = 2.5;
 
 //horn
-
 mg946r_horn_height = 4;
-mg946r_horn_length = 32.5;
-mg946r_horn_1stcircle = 7;
-mg946r_horn_2ndcircle = 13;
+mg946r_horn_length = 33+1;
+mg946r_horn_1stcircle = 7+1;
+mg946r_horn_2ndcircle = 13+1;
 mg946r_horn_bigscrew = 6;
 mg946r_horn_smallscrew = 2;
 mg946r_horn_smallscrew_length = 19.5;
 mg946r_horn_head_d1 = 2;
-mg946r_horn_head_d2 = 3;
+mg946r_horn_head_d2 = 3;  
 //mg946r_horn_length = 39-7;
 /* ----------------------------- */
 
@@ -90,7 +102,7 @@ mg995_hole_diameter = 2.5;
 
 //horn
 
-mg995_horn_height = 4;
+mg995_horn_height = 4.5;
 mg995_horn_length = 19;
 mg995_horn_1stcircle = 10;
 mg995_horn_2ndcircle = 4;
@@ -105,35 +117,41 @@ mg995_horn_head_d2 = 3;
 
 /* ------ hk15328 ------ */
 //servo dimensions
-hk15328_total_height = 43; //A
-hk15328_length = 41; //B 
-
+hk15328_total_height = 43;
+hk15328_length = 41;
+hk15328_partial_height = 37.5;
 hk15328_width = 20; //D
-hk15328_total_length = 55; //E
-hk15328_height = 27;
+hk15328_total_length = 55;
+hk15328_height = 27.5;
+hk15328_height_fh = 2.5;
+hk15328_length_to_shaft = 10;
 
+//shaft dimensions
+hk15328_shaft_diameter = 6;
+hk15328_shaft_height = 4;
 
 hk15328_bottom_cylinder_diameter = 0.384*hk15328_width; //sleeve
 //hk15328_bottom_cylinder_height = 4.8; //sleeve
 hk15328_bottomhinge_hole = hk15328_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-/*hk15328_fixation_hole_x = ;
-hk15328_fixation_hole_y = ;
-hk15328_fixation_hole_z = ;
-hk15328_hole_diameter = ;
+hk15328_fixation_hole_x = 4;
+hk15328_fixation_hole_y = 0;
+hk15328_fixation_hole_z = 5;
+hk15328_hole_diameter = 2.5;
 
 //horn
-hk15328_horn_height = ;
-hk15328_horn_1stcircle = ;
-hk15328_horn_2ndcircle = ;
-hk15328_horn_length = ;
-hk15328_horn_bigscrew = ;
-hk15328_horn_smallscrew = ;
-hk15328_horn_smallscrew_length = ;
-hk15328_horn_head_d1 = ;
-hk15328_horn_head_d2 = ;
-*/    
+hk15328_horn_height = 4;
+hk15328_horn_length = 19+1;
+hk15328_horn_1stcircle = 5+1;
+hk15328_horn_2ndcircle = 13+1;
+hk15328_horn_bigscrew = 6;
+hk15328_horn_smallscrew = 2;
+hk15328_horn_smallscrew_length = 11;
+hk15328_horn_head_d1 = 2;
+hk15328_horn_head_d2 = 3;  
+//hk15328_horn_length = 39-7;
+/* ----------------------------- */  
 /* ----------------------------- */ 
 
 /* ------ tgys901d ------ */
@@ -232,3 +250,120 @@ xgd11hmb_horn_head_d1 = 2;
 xgd11hmb_horn_head_d2 = 3;
     
 /* ----------------------------- */ 
+
+/* ------ tss10mg ------ */
+//servo dimensions
+//servo dimensions 
+tss10mg_total_height = 30;
+tss10mg_length = 23;
+tss10mg_partial_height = 23;
+tss10mg_width = 12; //D
+tss10mg_total_length = 32;
+tss10mg_height = 17;
+tss10mg_height_fh = 1.5;
+tss10mg_length_to_shaft = 5.5;
+
+//shaft dimensions
+tss10mg_shaft_diameter = 4;
+tss10mg_shaft_height = 3;
+
+tss10mg_bottom_cylinder_diameter = 0.5*tss10mg_width; //sleeve
+//tss10mg_bottom_cylinder_height = 4.8; //sleeve
+tss10mg_bottomhinge_hole = tss10mg_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+tss10mg_fixation_hole_x = 2.5;
+tss10mg_fixation_hole_y = 0;
+tss10mg_fixation_hole_z = 5;
+tss10mg_hole_diameter = 2;
+
+//horn
+tss10mg_horn_height = 4;
+tss10mg_horn_length = 17.5+1;
+tss10mg_horn_1stcircle = 5+1;
+tss10mg_horn_2ndcircle = 6+1;
+tss10mg_horn_bigscrew = 2;
+tss10mg_horn_smallscrew = 1;
+tss10mg_horn_smallscrew_length = 10;
+tss10mg_horn_head_d1 = 2;
+tss10mg_horn_head_d2 = 3;  
+//tss10mg_horn_length = 39-7;
+/* ----------------------------- */
+
+/* ------ hd1160a ------ */
+//servo dimensions
+//servo dimensions 
+hd1160a_total_height = 36.5;
+hd1160a_length = 28;
+hd1160a_partial_height = 26.5;
+hd1160a_width = 13.2; //D
+hd1160a_total_length = 40;
+hd1160a_height = 19;
+hd1160a_height_fh = 1.5;
+hd1160a_length_to_shaft = 7.5;
+
+//shaft dimensions
+hd1160a_shaft_diameter = 9;
+hd1160a_shaft_height = 5;
+
+hd1160a_bottom_cylinder_diameter = 0.384*hd1160a_width; //sleeve
+//hd1160a_bottom_cylinder_height = 4.8; //sleeve
+hd1160a_bottomhinge_hole = hd1160a_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+hd1160a_fixation_hole_x = 6.5;
+hd1160a_fixation_hole_y = 0;
+hd1160a_fixation_hole_z = 3;
+hd1160a_hole_diameter = 4;
+
+//horn
+hd1160a_horn_height = 2;
+hd1160a_horn_length = 23+1;
+hd1160a_horn_1stcircle = 5+1;
+hd1160a_horn_2ndcircle = 9.2+1;
+hd1160a_horn_bigscrew = 2.5;
+hd1160a_horn_smallscrew = 2;
+hd1160a_horn_smallscrew_length = 14;
+hd1160a_horn_head_d1 = 2;
+hd1160a_horn_head_d2 = 3;  
+//hd1160a_horn_length = 39-7;
+/* ----------------------------- */
+
+/* ------ max3002 ------ */
+//servo dimensions
+//servo dimensions 
+max3002_total_height = 30;
+max3002_length = 23;
+max3002_partial_height = 21.5;
+max3002_width = 12; //D
+max3002_total_length = 32.5;
+max3002_height = 16.5;
+max3002_height_fh = 1.5;
+max3002_length_to_shaft = 6;
+
+//shaft dimensions
+max3002_shaft_diameter = 6;
+max3002_shaft_height = 3;
+
+max3002_bottom_cylinder_diameter = 0.384*max3002_width; //sleeve
+//max3002_bottom_cylinder_height = 4.8; //sleeve
+max3002_bottomhinge_hole = max3002_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+max3002_fixation_hole_x = 2.5;
+max3002_fixation_hole_y = 5.5;
+max3002_fixation_hole_z = 0;
+max3002_hole_diameter = 2;
+
+//horn
+max3002_horn_height = 2;
+max3002_horn_length = 17.5+1;
+max3002_horn_1stcircle = 5+1;
+max3002_horn_2ndcircle = 6+1;
+max3002_horn_bigscrew = 1.5;
+max3002_horn_smallscrew = 1;
+max3002_horn_smallscrew_length = 10.5;
+max3002_horn_head_d1 = 2;
+max3002_horn_head_d2 = 3;  
+//max3002_horn_length = 39-7;
+/* ----------------------------- */
