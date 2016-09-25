@@ -35,8 +35,26 @@ module horn_hk15328(){
     linear_extrude(height = hk15328_horn_height, center = false) circle(d = hk15328_horn_2ndcircle, $fn = 32);
 }
 
+module horn_tss10mg_hinge(){
+  linear_extrude(height = tss10mg_horn_height, center = false)
+      hull(){
+       translate([tss10mg_horn_length- tss10mg_horn_1stcircle/2+1, 0, 0]) circle(d = tss10mg_horn_1stcircle, $fn = 32);
+       circle(d = tss10mg_horn_2ndcircle, $fn = 32);
+      }
+}
+
+module horn_tss10mg(){
+  linear_extrude(height = tss10mg_horn_height-2, center = false)
+      hull(){
+       translate([tss10mg_horn_length- tss10mg_horn_1stcircle/2, 0, 0]) circle(d = tss10mg_horn_1stcircle, $fn = 32);
+       circle(d = tss10mg_horn_2ndcircle, $fn = 32);
+      }
+}   
+
 //horn_s8330m();
 //translate([0,20,0]) 
 //    horn_mg946r();
 //translate([0,-20,0])
 //    horn_hk15328();
+//translate([20,0,0])
+//    horn_tss10mg();

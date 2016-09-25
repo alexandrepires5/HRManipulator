@@ -254,39 +254,39 @@ xgd11hmb_horn_head_d2 = 3;
 /* ------ tss10mg ------ */
 //servo dimensions
 //servo dimensions 
-/*tss10mg_total_height = 43;
-tss10mg_length = 41;
-tss10mg_partial_height = ;
-tss10mg_width = 20; //D
-tss10mg_total_length = 55;
-tss10mg_height = 27;
-tss10mg_height_fh = ;
-tss10mg_length_to_shaft = ;
+tss10mg_total_height = 30;
+tss10mg_length = 23;
+tss10mg_partial_height = 23;
+tss10mg_width = 12; //D
+tss10mg_total_length = 32;
+tss10mg_height = 17;
+tss10mg_height_fh = 1.5;
+tss10mg_length_to_shaft = 5.5;
 
 //shaft dimensions
-tss10mg_shaft_diameter = ;
-tss10mg_shaft_height = ;
+tss10mg_shaft_diameter = 4;
+tss10mg_shaft_height = 3;
 
-tss10mg_bottom_cylinder_diameter = 0.384*tss10mg_width; //sleeve
+tss10mg_bottom_cylinder_diameter = 0.5*tss10mg_width; //sleeve
 //tss10mg_bottom_cylinder_height = 4.8; //sleeve
 tss10mg_bottomhinge_hole = tss10mg_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
-tss10mg_fixation_hole_x = ;
+tss10mg_fixation_hole_x = 2.5;
 tss10mg_fixation_hole_y = 0;
-tss10mg_fixation_hole_z = ;
-tss10mg_hole_diameter = ;
+tss10mg_fixation_hole_z = 5;
+tss10mg_hole_diameter = 2;
 
 //horn
-tss10mg_horn_height = ;
-tss10mg_horn_length = +1;
-tss10mg_horn_1stcircle = +1;
-tss10mg_horn_2ndcircle = +1;
-tss10mg_horn_bigscrew = ;
-tss10mg_horn_smallscrew = ;
-tss10mg_horn_smallscrew_length = ;
+tss10mg_horn_height = 4;
+tss10mg_horn_length = 17.5+1;
+tss10mg_horn_1stcircle = 5+1;
+tss10mg_horn_2ndcircle = 6+1;
+tss10mg_horn_bigscrew = 2;
+tss10mg_horn_smallscrew = 1;
+tss10mg_horn_smallscrew_length = 10;
 tss10mg_horn_head_d1 = 2;
-tss10mg_horn_head_d2 = 3;  /*
+tss10mg_horn_head_d2 = 3;  
 //tss10mg_horn_length = 39-7;
 /* ----------------------------- */
 
