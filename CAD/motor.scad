@@ -25,7 +25,7 @@ module motor_mg946r(){
     translate([0,mg946r_length*1/2-mg946r_length_to_shaft,mg946r_partial_height/2]) rotate([0,0,$t*180]) 
         color("white") cylinder(d=mg946r_shaft_diameter, h=mg946r_shaft_height);     
     
-    translate([0,mg946r_length*1/2-mg946r_length_to_shaft,( mg946r_partial_height/2+4)]) rotate([0,0,$t*180])
+    translate([0,mg946r_length*1/2-mg946r_length_to_shaft,( mg946r_partial_height/2+mg946r_shaft_height)]) rotate([0,0,$t*180])
         color("black") horn_mg946r();
 }
 

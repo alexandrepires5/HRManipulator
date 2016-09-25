@@ -18,7 +18,7 @@ s8830m_bottomhinge_hole = s8330m_bottom_cylinder_diameter+0.4;
 
 //servo_fixation_holes
 s8330m_fixation_hole_x = 5;
-s8330m_fixation_hole_y = 0;
+s8330m_fixation_hole_y = 5;
 s8330m_fixation_hole_z = 8.25;
 s8330m_hole_diameter = 2.5;
 
@@ -55,7 +55,7 @@ mg946r_length_to_shaft = 8;
 
 //shaft dimensions
 mg946r_shaft_diameter = 6;
-mg946r_shaft_height = 4;
+mg946r_shaft_height = 5;
 
 mg946r_bottom_cylinder_diameter = 0.384*mg946r_width; //sleeve
 //mg946r_bottom_cylinder_height = 4.8; //sleeve

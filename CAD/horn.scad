@@ -8,12 +8,30 @@ module horn_s8330m(){
     }
 }
 
+module horn_s8330m_hinge(){    
+    linear_extrude(height = s8330m_horn_height+2, center = false)
+    hull(){
+        translate([s8330m_horn_length -s8330m_horn_1stcircle/2+1, 0, 0]) circle(d = s8330m_horn_1stcircle+.5, $fn = 32);
+        circle(d = s8330m_horn_2ndcircle+.5, $fn = 32);
+    }
+}
+
 module horn_mg946r(){
     
   linear_extrude(height = mg946r_horn_height, center = false)
       hull(){
        translate([mg946r_horn_length- mg946r_horn_1stcircle/2, 0, 0]) circle(d = mg946r_horn_1stcircle, $fn = 32);
        circle(d = mg946r_horn_2ndcircle, $fn = 32);
+      }
+
+}
+
+module horn_mg946r_hinge(){
+    
+  linear_extrude(height = mg946r_horn_height+2, center = false)
+      hull(){
+       translate([mg946r_horn_length- mg946r_horn_1stcircle/2+1, 0, 0]) circle(d = mg946r_horn_1stcircle+.5, $fn = 32);
+       circle(d = mg946r_horn_2ndcircle+.5, $fn = 32);
       }
 
 }
