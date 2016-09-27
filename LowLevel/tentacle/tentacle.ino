@@ -58,9 +58,10 @@ void loop(){
 	    {
 	    	for(int j = 0; j < 12; j++)
 	    	{
-	    		theta_ref[j] = Serial.parseInt();
+	    		theta_ref[j] = Serial.parseInt(); //rever
 	    	}
 	    }
+     //incomingByte de confirmação
 	}
 
 	// ----- reading actual angle ----- //

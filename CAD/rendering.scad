@@ -14,8 +14,8 @@ smallscrew_length = s8330m_horn_smallscrew_length;
 smallscrew_head_d1 = s8330m_horn_head_d1;
 smallscrew_head_d2 = s8330m_horn_head_d2;
 //sleeve
-support_width_sleeve = (s8330m_total_length - s8330m_length)/2 + 3;
-servo_L = s8330m_length + 0.9;
+support_width_sleeve = (s8330m_total_length - s8330m_length)/2 + 2;
+servo_L = s8330m_length + 0.5;
 servo_H = s8330m_height + 0.5;
 support_z_sleeve = s8330m_width + 0.9;
 servo_bottom_cylinder_diameter = s8330m_bottom_cylinder_diameter;
@@ -30,6 +30,31 @@ sleeve_hinge_dist = (support_width_hinge+support_width_sleeve);
 sleeve_hinge_size = sleeve_hinge_dist*2;
 hinge_sleeve_dist = 5;
 hanger_height = support_width_hinge + 0.3;
+
+module hanger_base_v2(){
+    difference(){
+        union(){
+            linear_extrude(height = support_z_hinge/2 + servo_axis_clear)
+                polygon(points = [ 
+                [0,-3],
+                [support_width_hinge+0.3+1+5, -3],
+                [support_width_hinge+0.3+1+5, support_z_hinge+0.3+10+2-5],
+                [0, support_z_hinge+0.3+10+2-5],
+                [0, support_z_hinge+0.3+5+1-5],
+                [1, support_z_hinge+0.3+5+1-5],
+                [1, support_z_hinge+0.3+5+2-5],
+                [support_width_hinge+0.3+1, support_z_hinge+0.3+5+2-5],
+                [support_width_hinge+0.3+1,5-3],
+                [1,5-3],
+                [1,5+1-3],
+                [0,5+1-3] ]);
+            translate([0,-3,-1+support_z_hinge/2 + servo_axis_clear+0.3]) cube([5+1+support_width_hinge+0.3,10+2+support_z_hinge+0.3-2,5],false);
+        }
+        union(){
+            
+        }
+    }
+}
 
 module generic_screw(d = 3, h = 10, head_h = 1, head_top_d = 5, head_bot_d = 3, thread = 0) {
     union() {
@@ -60,10 +85,71 @@ module plate() {
     }
 }
 
+module plate_1(){
+    difference(){
+        union(){
+            cube([15,20,3], center = true);
+            translate([0,-7,3]) cube([15,6,7], center = true);
+        }
+        union(){
+            translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
+            translate([5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+        }
+    }
+}
+
 module plate_2(){
     difference(){
         union(){
             cube([15,20,3], center = true);
+            //translate([0,-7,3]) cube([15,6,5], center = true);
+        }
+        union(){
+            translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
+            translate([5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+        }
+    }
+}
+
+module plate_3(){
+    difference(){
+        union(){
+            cube([15,20,3], center = true);
+            translate([0,-7,3]) cube([15,6,3.8], center = true);
+        }
+        union(){
+            translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
+            translate([5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+        }
+    }
+}
+
+module plate_4(){
+    difference(){
+        union(){
+            cube([15,20,3], center = true);
+            translate([0,-7,1.05]) cube([15,6,2], center = true);
+        }
+        union(){
+            translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
+            translate([5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+            translate([-5,-7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn = 32);
+        }
+    }
+}
+
+module plate_5(){
+    difference(){
+        union(){
+            cube([15,20,3], center = true);
+//            translate([0,-7,3]) cube([15,6,5], center = true);
         }
         union(){
             translate([5,7.5,-1.5]) cylinder(d = 2.5, h = 10, $fn=32);
@@ -79,14 +165,21 @@ module servo_sleeve_s8330m(type = "side_hole", hole = "one"){
     union(){
 	  difference(){
 	    linear_extrude(height = support_z_sleeve, center = true)
-	    polygon( points=[[0,0],
+	    polygon( points=[[1,0],
 	                 [support_width_sleeve, 0],
 	                 [support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, 0],
-	                 [-servo_L, 0],
-	                 [-servo_L, -servo_H],
-	                 [0, -servo_H]
+	                 [-servo_L-1, 0],
+	                 [-servo_L-1, -servo_H],
+	                 [1, -servo_H]
+//                     [support_width_sleeve, 0],
+//	                 [support_width_sleeve, -(servo_H + support_width_sleeve)],
+//	                 [-servo_L - support_width_sleeve, -(servo_H + support_width_sleeve)],
+//	                 [-servo_L - support_width_sleeve, 0],
+//	                 [-servo_L, 0],
+//	                 [-servo_L, -servo_H],
+//	                 [0, -servo_H]
 	                ]);
 	    // Servo fixation hole
 	    translate([servo_fixation_hole_x, servo_fixation_hole_y, servo_fixation_hole_z])
@@ -110,26 +203,26 @@ module servo_sleeve_s8330m(type = "side_hole", hole = "one"){
 	    #cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
         }
         
-        // Servo cable carving (side start)
-	    translate([-servo_L - 2, -servo_H - 3.4 + 1e-3, -4.2/2])
-	    #cube([support_width_sleeve, 7 + 8, 4.1]);
+         // Servo cable carving (side start)
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -12/2])
+	    cube(size=[support_width_sleeve, 9 + 1.4, 12]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -3.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 3.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 9, 3.2]);
+	      translate([-12, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 9, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -3.4 - servo_H, -4.2/2])
-	      cube([servo_L, 3.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([8.9, 2 * support_width_sleeve, 3.2]);
+	      translate([-12, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([12, 2 * support_width_sleeve, 3.5]);
         }
 	  }
 	
@@ -149,11 +242,11 @@ module servo_hinge_s8330m(hinge_servo = "s8330m"){
             
           linear_extrude(height = support_z_hinge, center = true)
             polygon( points=[
-	                 [support_width_hinge, 0],
-	                 [0, 0],
-	                 [0, servo_axis_clear],
-	                 [-servo_HTot - support_width_sleeve, servo_axis_clear],
-	                 [-servo_HTot - support_width_sleeve, 0],
+	                 [support_width_hinge,0],
+	                 [0.5, 0],
+	                 [0.5, servo_axis_clear],
+	                 [-servo_HTot - support_width_sleeve-.5, servo_axis_clear],
+	                 [-servo_HTot - support_width_sleeve-.5, 0],
 	                 [-servo_HTot - support_width_sleeve - support_width_hinge, 0],
 	                 [-servo_HTot - support_width_sleeve - support_width_hinge, support_width_hinge + servo_axis_clear],
 	                 [support_width_hinge, support_width_hinge + servo_axis_clear]
@@ -161,8 +254,8 @@ module servo_hinge_s8330m(hinge_servo = "s8330m"){
 
           // Round end
           for(i = [0:1]){
-              translate([i*(-servo_HTot - support_width_sleeve - support_width_hinge), 0, 0]) rotate([0, 90, 0])
-                cylinder(d = support_z_hinge, h = support_width_hinge, $fn = 32);
+              translate([i*(-servo_HTot - support_width_sleeve - support_width_hinge)+.5*(1-i), 0, 0]) rotate([0, 90, 0])
+                cylinder(d = support_z_hinge, h = support_width_hinge-.5, $fn = 32);
           }
         
         }
@@ -253,14 +346,14 @@ module servo_sleeve_mg946r(type = "side_hole", hole = "two"){
     union(){
 	  difference(){
 	    linear_extrude(height = support_z_sleeve, center = true)
-	    polygon( points=[[0,0],
+	    polygon( points=[[1,0],
 	                 [support_width_sleeve, 0],
 	                 [support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, 0],
 	                 [-servo_L, 0],
 	                 [-servo_L, -servo_H],
-	                 [0, -servo_H]
+	                 [1, -servo_H]
 	                ]);
 	    // Servo fixation hole
 	    translate([servo_fixation_hole_x, servo_fixation_hole_y, servo_fixation_hole_z])
@@ -285,25 +378,25 @@ module servo_sleeve_mg946r(type = "side_hole", hole = "two"){
         }
         
         // Servo cable carving (side start)
-	    translate([-servo_L - 1.4, -servo_H - 1.4 + 1e-3, -4.2/2])
-	    cube([support_width_sleeve, 7 + 1.4, 4.2]);
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -12/2])
+	    cube(size=[support_width_sleeve, 9 + 1.4, 12]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 9, 3.2]);
+	      translate([-12, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 9, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([9, 2 * support_width_sleeve, 3.2]);
+	      translate([-12, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([12, 2 * support_width_sleeve, 3.5]);
         }
 	  }
 	
@@ -484,14 +577,14 @@ module servo_sleeve_hk15328(type = "side_hole", hole = "two"){
     union(){
 	  difference(){
 	    linear_extrude(height = support_z_sleeve, center = true)
-	    polygon( points=[[0,0],
+	    polygon( points=[[1,0],
 	                 [support_width_sleeve, 0],
 	                 [support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, 0],
-	                 [-servo_L, 0],
-	                 [-servo_L, -servo_H],
-	                 [0, -servo_H]
+	                 [-servo_L-1, 0],
+	                 [-servo_L-1, -servo_H],
+	                 [1, -servo_H]
 	                ]);
 	    // Servo fixation hole
 	    translate([servo_fixation_hole_x, servo_fixation_hole_y, servo_fixation_hole_z])
@@ -515,29 +608,28 @@ module servo_sleeve_hk15328(type = "side_hole", hole = "two"){
 	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
         }
         
-        // Servo cable carving (side start)
-	    translate([-servo_L - 1.4, -servo_H - 1.4 + 1e-3, -4.2/2])
-	    cube([support_width_sleeve, 7 + 1.4, 4.2]);
+         // Servo cable carving (side start)
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -12/2])
+	    cube(size=[support_width_sleeve, 9 + 1.4, 12]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 9, 3.2]);
+	      translate([-12, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 9, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -12/2])
+	      cube([servo_L, 1.5, 12]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([9, 2 * support_width_sleeve, 3.2]);
+	      translate([-12, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([12, 2 * support_width_sleeve, 3.5]);
         }
-	  }
-	
+      }
 	  // Servo hinge
 	  //translate([-servo_L + 4.5,  -(servo_H + support_width_sleeve), 0])
       translate([-servo_L + 10.45,  -(servo_H + support_width_sleeve), 0])
@@ -566,10 +658,10 @@ module servo_hinge_hk15328(hinge_servo = "hk15328"){
           linear_extrude(height = support_z_hinge, center = true)
             polygon( points=[
 	                 [support_width_hinge, 0],
-	                 [0, 0],
-	                 [0, servo_axis_clear],
-	                 [-servo_HTot - support_width_sleeve, servo_axis_clear],
-	                 [-servo_HTot - support_width_sleeve, 0],
+	                 [1, 0],
+	                 [1, servo_axis_clear],
+	                 [-servo_HTot - support_width_sleeve-1, servo_axis_clear],
+	                 [-servo_HTot - support_width_sleeve-1, 0],
 	                 [-servo_HTot - support_width_sleeve - support_width_hinge, 0],
 	                 [-servo_HTot - support_width_sleeve - support_width_hinge, support_width_hinge + servo_axis_clear],
 	                 [support_width_hinge, support_width_hinge + servo_axis_clear]
@@ -577,8 +669,8 @@ module servo_hinge_hk15328(hinge_servo = "hk15328"){
 
           // Round end
           for(i = [0:1]){
-              translate([i*(-servo_HTot - support_width_sleeve - support_width_hinge), 0, 0]) rotate([0, 90, 0])
-                cylinder(d = support_z_hinge, h = support_width_hinge, $fn = 32);
+              translate([i*(-servo_HTot - support_width_sleeve - support_width_hinge-1)+1, 0, 0]) rotate([0, 90, 0])
+                cylinder(d = support_z_hinge, h = support_width_hinge-1, $fn = 32);
           }
         
         }
@@ -705,14 +797,14 @@ module servo_sleeve_hd1160a(type = "side_hole", hole = "two"){
     union(){
 	  difference(){
 	    linear_extrude(height = support_z_sleeve, center = true)
-	    polygon( points=[[0,0],
+	    polygon( points=[[0.5,0],
 	                 [support_width_sleeve, 0],
 	                 [support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, -(servo_H + support_width_sleeve)],
 	                 [-servo_L - support_width_sleeve, 0],
-	                 [-servo_L, 0],
-	                 [-servo_L, -servo_H],
-	                 [0, -servo_H]
+	                 [-servo_L-.5, 0],
+	                 [-servo_L-.5, -servo_H],
+	                 [0.5, -servo_H]
 	                ]);
 	    // Servo fixation hole
 	    translate([3, 6.5, 0])
@@ -725,26 +817,26 @@ module servo_sleeve_hd1160a(type = "side_hole", hole = "two"){
 	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
 
         
-        // Servo cable carving (side start)
-	    translate([-servo_L - 1.4, -servo_H - 1.4 + 1e-3, -2.1])
-	    cube([support_width_sleeve, 7 + 1.4, 4.2]);
+         // Servo cable carving (side start)
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -8/2])
+	    cube(size=[support_width_sleeve, 9 + 1.4, 8]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 6, 3.2]);
+	      translate([-8, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 8, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([9, 2 * support_width_sleeve, 3.2]);
+	      translate([-8, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([8, 2 * support_width_sleeve, 3.5]);
         }
 	  }
 	
@@ -888,8 +980,8 @@ module sleeve_hinge_hd1160a(screw){
     
     difference(){
       union(){
-         translate([-sleeve_hinge_size/2+5 + support_width_sleeve, -sleeve_hinge_dist/2 - servo_H - support_width_sleeve, 0])
-  cube([sleeve_hinge_size-12, sleeve_hinge_dist + 4, support_z_sleeve], center = true);
+         translate([-sleeve_hinge_size/2+6 + support_width_sleeve, -sleeve_hinge_dist/2 - servo_H - support_width_sleeve, 0])
+  cube([sleeve_hinge_size-14, sleeve_hinge_dist + 4, support_z_sleeve], center = true);
 
   translate([0, -servo_axis_clear - servo_H - 2 * support_width_hinge - sleeve_hinge_dist, 0]) 
     servo_hinge_hd1160a();
@@ -936,26 +1028,26 @@ module servo_sleeve_tss10mg(type = "side_hole", hole = "two"){
 	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
 
         
-        // Servo cable carving (side start)
-	    translate([-servo_L - 1.4, -servo_H - 1.4 + 1e-3, -4.2/2])
-	    cube([support_width_sleeve, 7 + 1.4, 4.2]);
+         // Servo cable carving (side start)
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -12/2])
+	    cube(size=[support_width_sleeve, 8 + 1.4, 12]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 6, 3.2]);
+	      translate([-8, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 8, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([9, 2 * support_width_sleeve, 3.2]);
+	      translate([-8, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([8, 2 * support_width_sleeve, 3.5]);
         }
 	  }
 	
@@ -1148,26 +1240,26 @@ module servo_sleeve_max3002(type = "side_hole", hole = "two"){
 	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
 
         
-        // Servo cable carving (side start)
-	    translate([-servo_L - 1.4, -servo_H - 1.4 + 1e-3, -2.1])
-	    cube([support_width_sleeve, 7 + 1.4, 4.2]);
+         // Servo cable carving (side start)
+	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -8/2])
+	    cube(size=[support_width_sleeve, 9 + 1.4, 8]);
 	
         if(type == "side_hole"){
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L + support_width_sleeve, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L + support_width_sleeve, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-10, -1.0 - servo_H, -3.2/2])
-	      cube([servo_L + support_width_sleeve, 6, 3.2]);
+	      translate([-8, -1.0 - servo_H, -3.2/2])
+	      cube([servo_L + support_width_sleeve, 8, 3.5]);
         } else { // bottom_hole
   	      // Servo cable carving
-	      translate([-servo_L, -1.4 - servo_H, -4.2/2])
-	      cube([servo_L, 1.5, 4.1]);
+	      translate([-servo_L, -1.4 - servo_H, -8/2])
+	      cube([servo_L, 1.5, 8]);
 	
 	      // Servo cable header hole
-	      translate([-9, -1.5 * support_width_sleeve - servo_H, -3.2/2])
-	      cube([9, 2 * support_width_sleeve, 3.2]);
+	      translate([-8, -1.5 * support_width_sleeve - servo_H, -3.2/2])
+	      cube([8, 2 * support_width_sleeve, 3.5]);
         }
 	  }
 	
@@ -1289,10 +1381,10 @@ module hinge_sleeve_alt_sleeve_max3002(screw){
         else servo_sleeve_max3002(type = "bottom_hole", hole = "two");
     }
 
-    translate([-17.1*abs(servo_axis_clear-servo_H)+6, -servo_L - 0.5 * support_width_sleeve, 0])
+    translate([-17.1*abs(servo_axis_clear-servo_H)+4, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
 
-    translate([-17.1*abs(servo_axis_clear-servo_H)-7.25/16.5*servo_H, -servo_L - 0.5 * support_width_sleeve, 0])
+    translate([-17.1*abs(servo_axis_clear-servo_H)-6, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
   }
 }
@@ -1321,26 +1413,29 @@ module sleeve_hinge_max3002(screw){
   
 }
 
+
+
+
 module s8330m_final(){
     motor_s8330m();
-    translate([0,-30,12]) rotate([90,0,-90]) 
+    translate([0,-29.5,12]) rotate([90,0,-90]) 
         color("white") sleeve_hinge_s8330m("two");
     translate([0,18,31]) rotate([0,-90,0]) 
         color("white")servo_hinge_s8330m();
-    translate([0,1,-120]) rotate([90,0,0]) 
+    translate([0,1,-118]) rotate([90,0,0]) 
         motor_s8330m();
-    translate([0,-57.5,-90]) rotate([90,0,-90])
+    translate([0,-57.5,-89]) rotate([90,0,-90])
         color("white") hinge_sleeve_alt_sleeve_s8330m();
 }
 
 module mg946r_final(){
     motor_mg946r();
     //rotate([0,0,180*$t-90]) 
-    translate([-1,-39,110]) rotate([90,0,-90])
+    translate([0,-39,108]) rotate([90,0,-90])
          color("white") hinge_sleeve_alt_hinge_mg946r();
-    translate([0,-38.25+17.5,9-199.5+199.5]) rotate([90,0,-90])
+    translate([0,-38.25+18,9]) rotate([90,0,-90])
          color("white") sleeve_hinge_mg946r("two");
-    translate([0,-74.5,-79.5]) rotate([90,0,-90])
+    translate([0,-74.5,-79]) rotate([90,0,-90])
         color("white") hinge_sleeve_alt_sleeve_mg946r();
     translate([0,4,-100.25]) rotate([90,0,0])
         motor_mg946r();
@@ -1395,26 +1490,77 @@ module max3002_final(){
 }
 
 module servo_render(){
-    s8330m_final(); //HT
-//    translate([0,-9.5,-199.5]) rotate([0,0,0])
-    translate([0,0,-199.5])
-        mg946r_final(); //MT1 
-//    translate([0,-26.5,-375.3]) rotate([0,0,0])
-   translate([0,0,-369.75])
-        hk15328_final(); //MT2 
-//    translate([0,-37,-532]) rotate([0,0,0])
-    translate([0,0,-526.5])
-        hd1160a_final(); //LT1 
-//    translate([0,-41,-673]) rotate([0,0,0])
-    translate([0,0,-662.75])
-        tss10mg_final(); //LT2
-//    translate([0,-47,-792.5])
-    translate([0,0,-781.5])
-        max3002_final(); //LT3
+    difference(){
+        union(){
+            s8330m_final(); //HT
+        //    translate([0,-9.5,-199.5]) rotate([0,0,0])
+            translate([0,0,-199.5])
+                mg946r_final(); //MT1 
+        //    translate([0,-26.5,-375.3]) rotate([0,0,0])
+           translate([0,0,-369.75])
+                hk15328_final(); //MT2 
+        //    translate([0,-37,-532]) rotate([0,0,0])
+            translate([0,0,-526.5])
+                hd1160a_final(); //LT1 
+        //    translate([0,-41,-673]) rotate([0,0,0])
+            translate([0,0,-662.75])
+                tss10mg_final(); //LT2
+        //    translate([0,-47,-792.5])
+            translate([0,0,-781.5])
+                max3002_final(); //LT3
+        
     
     
-    translate([-17,23.3,-162.65]) rotate([90,0,90])
-        color("blue") plate_2();
+            translate([-16.7,23.3,-162.65]) rotate([90,0,90])
+                color("blue") plate_1();
+            translate([16.5,23.3,-162.65]) rotate([90,0,270])
+                color("blue") plate_1();
+            translate([-11.8,21.45,-332.525]) rotate([90,0,90])
+                color("blue") plate_2();
+            translate([11.8,21.45,-332.525]) rotate([90,0,270])
+                color("blue") plate_2();
+            translate([-11.7,20.9,-494.65]) rotate([90,0,90])
+                color("blue") plate_3();
+            translate([11.7,20.9,-494.65]) rotate([90,0,270])
+                color("blue") plate_3();
+            translate([-8.2,17.85,-634.65]) rotate([90,0,90])
+                color("blue") plate_4();
+            translate([8.2,17.85,-634.65]) rotate([90,0,270])
+                color("blue") plate_4();
+            translate([-7.7,15,-752.9]) rotate([90,0,90])
+                color("blue") plate_5();
+            translate([7.7,15,-752.9]) rotate([90,0,270])
+                color("blue") plate_5();
+            
+            translate([17,51.5,29.8]) rotate([0,-90,90])
+                color("white") hanger_base_v2();
+    
+        }
+        union(){
+            
+        
+            translate([22,40,39]) rotate([0,-90,0])
+                #cylinder(d = 2.5, h = support_z_hinge+15, $fn =32);
+            translate([22,25,39]) rotate([0,-90,0])
+                #cylinder(d = 2.5, h = support_z_hinge+15, $fn =32);
+            
+            translate([0,0,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([17,5,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);
+//            translate([17,30,26])
+//                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([17,45,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([-17,5,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);    
+//            translate([-17,30,26])
+//                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([-17,45,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);    
+        }
+    }
+    
 // ---------- special package ------------ //
     //mg995_final();
     //xgd11hmb_final();
