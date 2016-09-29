@@ -36,19 +36,19 @@ module hanger_base_v2(){
         union(){
             linear_extrude(height = support_z_hinge/2 + servo_axis_clear)
                 polygon(points = [ 
-                [0,-3],
+                [-3,-3],
                 [support_width_hinge+0.3+1+5, -3],
                 [support_width_hinge+0.3+1+5, support_z_hinge+0.3+10+2-5],
-                [0, support_z_hinge+0.3+10+2-5],
-                [0, support_z_hinge+0.3+5+1-5],
+                [-3, support_z_hinge+0.3+10+2-5],
+                [-3, support_z_hinge+0.3+5+1-5],
                 [1, support_z_hinge+0.3+5+1-5],
                 [1, support_z_hinge+0.3+5+2-5],
                 [support_width_hinge+0.3+1, support_z_hinge+0.3+5+2-5],
                 [support_width_hinge+0.3+1,5-3],
                 [1,5-3],
                 [1,5+1-3],
-                [0,5+1-3] ]);
-            translate([0,-3,-1+support_z_hinge/2 + servo_axis_clear+0.3]) cube([5+1+support_width_hinge+0.3,10+2+support_z_hinge+0.3-2,5],false);
+                [-3,5+1-3] ]);
+            translate([-3,-3,-1+support_z_hinge/2 + servo_axis_clear+0.3]) cube([5+4+support_width_hinge+0.3,10+2+support_z_hinge+0.3-2,5],false);
         }
         union(){
             
@@ -1418,9 +1418,9 @@ module sleeve_hinge_max3002(screw){
 
 module s8330m_final(){
     motor_s8330m();
-    translate([0,-29.5,12]) rotate([90,0,-90]) 
+     translate([0,-29.5,12]) rotate([90,0,-90]) 
         color("white") sleeve_hinge_s8330m("two");
-    translate([0,18,31]) rotate([0,-90,0]) 
+    rotate([0,0,180*$t-90]) translate([0,18,31]) rotate([0,-90,0]) 
         color("white")servo_hinge_s8330m();
     translate([0,1,-118]) rotate([90,0,0]) 
         motor_s8330m();
@@ -1435,10 +1435,10 @@ module mg946r_final(){
          color("white") hinge_sleeve_alt_hinge_mg946r();
     translate([0,-38.25+18,9]) rotate([90,0,-90])
          color("white") sleeve_hinge_mg946r("two");
-    translate([0,-74.5,-79]) rotate([90,0,-90])
-        color("white") hinge_sleeve_alt_sleeve_mg946r();
-    translate([0,4,-100.25]) rotate([90,0,0])
-        motor_mg946r();
+//    translate([0,-74.5,-79]) rotate([90,0,-90])
+//        color("white") hinge_sleeve_alt_sleeve_mg946r();
+//    translate([0,4,-100.25]) rotate([90,0,0])
+//        motor_mg946r();
 }
 
 module hk15328_final(){
@@ -1496,44 +1496,44 @@ module servo_render(){
         //    translate([0,-9.5,-199.5]) rotate([0,0,0])
             translate([0,0,-199.5])
                 mg946r_final(); //MT1 
-        //    translate([0,-26.5,-375.3]) rotate([0,0,0])
-           translate([0,0,-369.75])
-                hk15328_final(); //MT2 
-        //    translate([0,-37,-532]) rotate([0,0,0])
-            translate([0,0,-526.5])
-                hd1160a_final(); //LT1 
-        //    translate([0,-41,-673]) rotate([0,0,0])
-            translate([0,0,-662.75])
-                tss10mg_final(); //LT2
-        //    translate([0,-47,-792.5])
-            translate([0,0,-781.5])
-                max3002_final(); //LT3
-        
-    
-    
-            translate([-16.7,23.3,-162.65]) rotate([90,0,90])
-                color("blue") plate_1();
-            translate([16.5,23.3,-162.65]) rotate([90,0,270])
-                color("blue") plate_1();
-            translate([-11.8,21.45,-332.525]) rotate([90,0,90])
-                color("blue") plate_2();
-            translate([11.8,21.45,-332.525]) rotate([90,0,270])
-                color("blue") plate_2();
-            translate([-11.7,20.9,-494.65]) rotate([90,0,90])
-                color("blue") plate_3();
-            translate([11.7,20.9,-494.65]) rotate([90,0,270])
-                color("blue") plate_3();
-            translate([-8.2,17.85,-634.65]) rotate([90,0,90])
-                color("blue") plate_4();
-            translate([8.2,17.85,-634.65]) rotate([90,0,270])
-                color("blue") plate_4();
-            translate([-7.7,15,-752.9]) rotate([90,0,90])
-                color("blue") plate_5();
-            translate([7.7,15,-752.9]) rotate([90,0,270])
-                color("blue") plate_5();
-            
-            translate([17,51.5,29.8]) rotate([0,-90,90])
-                color("white") hanger_base_v2();
+//        //    translate([0,-26.5,-375.3]) rotate([0,0,0])
+//           translate([0,0,-369.75])
+//                hk15328_final(); //MT2 
+//        //    translate([0,-37,-532]) rotate([0,0,0])
+//            translate([0,0,-526.5])
+//                hd1160a_final(); //LT1 
+//        //    translate([0,-41,-673]) rotate([0,0,0])
+//            translate([0,0,-662.75])
+//                tss10mg_final(); //LT2
+//        //    translate([0,-47,-792.5])
+//            translate([0,0,-781.5])
+//                max3002_final(); //LT3
+//        
+//    
+//    
+//            translate([-16.7,23.3,-162.65]) rotate([90,0,90])
+//                color("blue") plate_1();
+//            translate([16.5,23.3,-162.65]) rotate([90,0,270])
+//                color("blue") plate_1();
+//            translate([-11.8,21.45,-332.525]) rotate([90,0,90])
+//                color("blue") plate_2();
+//            translate([11.8,21.45,-332.525]) rotate([90,0,270])
+//                color("blue") plate_2();
+//            translate([-11.7,20.9,-494.65]) rotate([90,0,90])
+//                color("blue") plate_3();
+//            translate([11.7,20.9,-494.65]) rotate([90,0,270])
+//                color("blue") plate_3();
+//            translate([-8.2,17.85,-634.65]) rotate([90,0,90])
+//                color("blue") plate_4();
+//            translate([8.2,17.85,-634.65]) rotate([90,0,270])
+//                color("blue") plate_4();
+//            translate([-7.7,15,-752.9]) rotate([90,0,90])
+//                color("blue") plate_5();
+//            translate([7.7,15,-752.9]) rotate([90,0,270])
+//                color("blue") plate_5();
+//            
+//            translate([17,51.5,29.8]) rotate([0,-90,90])
+//                color("white") hanger_base_v2();
     
         }
         union(){
@@ -1548,14 +1548,14 @@ module servo_render(){
                 #cylinder(d = 2.5, h = 30, $fn=32);
             translate([17,5,26])
                 #cylinder(d = 2.5, h = 30, $fn=32);
-//            translate([17,30,26])
-//                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([17,30,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);
             translate([17,45,26])
                 #cylinder(d = 2.5, h = 30, $fn=32);
             translate([-17,5,26])
                 #cylinder(d = 2.5, h = 30, $fn=32);    
-//            translate([-17,30,26])
-//                #cylinder(d = 2.5, h = 30, $fn=32);
+            translate([-17,30,26])
+                #cylinder(d = 2.5, h = 30, $fn=32);
             translate([-17,45,26])
                 #cylinder(d = 2.5, h = 30, $fn=32);    
         }
