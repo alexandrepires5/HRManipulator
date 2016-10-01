@@ -227,7 +227,7 @@ module servo_sleeve_s8330m(type = "side_hole", hole = "one"){
 	  }
 	
 	  // Servo hinge
-	  translate([-servo_L + 12,  -(servo_H + support_width_sleeve), 0])
+	  translate([-servo_L + 13,  -(servo_H + support_width_sleeve), 0])
 	  rotate([90, 0, 0])
 	  cylinder(d = servo_bottom_cylinder_diameter, h = support_width_hinge-1, $fn =32);
 	
@@ -402,7 +402,7 @@ module servo_sleeve_mg946r(type = "side_hole", hole = "two"){
 	
 	  // Servo hinge
 	  //translate([-servo_L + 4.5,  -(servo_H + support_width_sleeve), 0])
-      translate([-servo_L + 8,  -(servo_H + support_width_sleeve), 0])
+      translate([-servo_L + 8.5,  -(servo_H + support_width_sleeve), 0])
 	  rotate([90, 0, 0])
 	  cylinder(d = servo_bottom_cylinder_diameter, h = support_width_hinge-1, $fn =32);
 	
@@ -1381,10 +1381,10 @@ module hinge_sleeve_alt_sleeve_max3002(screw){
         else servo_sleeve_max3002(type = "bottom_hole", hole = "two");
     }
 
-    translate([-17.1*abs(servo_axis_clear-servo_H)+4, -servo_L - 0.5 * support_width_sleeve, 0])
+    translate([-17.1*abs(servo_axis_clear-servo_H)+2, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
 
-    translate([-17.1*abs(servo_axis_clear-servo_H)-6, -servo_L - 0.5 * support_width_sleeve, 0])
+    translate([-17.1*abs(servo_axis_clear-servo_H)-10, -servo_L - 0.5 * support_width_sleeve, 0])
     #cylinder(d = 2.5, h = 30, center = true, $fn =32);
   }
 }
@@ -1420,25 +1420,26 @@ module s8330m_final(){
     motor_s8330m();
      translate([0,-29.5,12]) rotate([90,0,-90]) 
         color("white") sleeve_hinge_s8330m("two");
-    rotate([0,0,180*$t-90]) translate([0,18,31]) rotate([0,-90,0]) 
+    //rotate([0,0,180*$t-90]) 
+    translate([0,17,31]) rotate([0,-90,0]) 
         color("white")servo_hinge_s8330m();
     translate([0,1,-118]) rotate([90,0,0]) 
         motor_s8330m();
-    translate([0,-57.5,-89]) rotate([90,0,-90])
+    translate([0,-56.5,-88]) rotate([90,0,-90])
         color("white") hinge_sleeve_alt_sleeve_s8330m();
 }
 
 module mg946r_final(){
     motor_mg946r();
     //rotate([0,0,180*$t-90]) 
-    translate([0,-39,108]) rotate([90,0,-90])
+    translate([0,-39.2,108]) rotate([90,0,-90])
          color("white") hinge_sleeve_alt_hinge_mg946r();
-    translate([0,-38.25+18,9]) rotate([90,0,-90])
+    translate([0,-20,9]) rotate([90,0,-90])
          color("white") sleeve_hinge_mg946r("two");
-//    translate([0,-74.5,-79]) rotate([90,0,-90])
-//        color("white") hinge_sleeve_alt_sleeve_mg946r();
-//    translate([0,4,-100.25]) rotate([90,0,0])
-//        motor_mg946r();
+    translate([0,-74.5,-79]) rotate([90,0,-90])
+        color("white") hinge_sleeve_alt_sleeve_mg946r();
+    translate([0,4,-100.25]) rotate([90,0,0])
+        motor_mg946r();
 }
 
 module hk15328_final(){
@@ -1496,44 +1497,44 @@ module servo_render(){
         //    translate([0,-9.5,-199.5]) rotate([0,0,0])
             translate([0,0,-199.5])
                 mg946r_final(); //MT1 
-//        //    translate([0,-26.5,-375.3]) rotate([0,0,0])
-//           translate([0,0,-369.75])
-//                hk15328_final(); //MT2 
-//        //    translate([0,-37,-532]) rotate([0,0,0])
-//            translate([0,0,-526.5])
-//                hd1160a_final(); //LT1 
-//        //    translate([0,-41,-673]) rotate([0,0,0])
-//            translate([0,0,-662.75])
-//                tss10mg_final(); //LT2
-//        //    translate([0,-47,-792.5])
-//            translate([0,0,-781.5])
-//                max3002_final(); //LT3
-//        
-//    
-//    
-//            translate([-16.7,23.3,-162.65]) rotate([90,0,90])
-//                color("blue") plate_1();
-//            translate([16.5,23.3,-162.65]) rotate([90,0,270])
-//                color("blue") plate_1();
-//            translate([-11.8,21.45,-332.525]) rotate([90,0,90])
-//                color("blue") plate_2();
-//            translate([11.8,21.45,-332.525]) rotate([90,0,270])
-//                color("blue") plate_2();
-//            translate([-11.7,20.9,-494.65]) rotate([90,0,90])
-//                color("blue") plate_3();
-//            translate([11.7,20.9,-494.65]) rotate([90,0,270])
-//                color("blue") plate_3();
-//            translate([-8.2,17.85,-634.65]) rotate([90,0,90])
-//                color("blue") plate_4();
-//            translate([8.2,17.85,-634.65]) rotate([90,0,270])
-//                color("blue") plate_4();
-//            translate([-7.7,15,-752.9]) rotate([90,0,90])
-//                color("blue") plate_5();
-//            translate([7.7,15,-752.9]) rotate([90,0,270])
-//                color("blue") plate_5();
-//            
-//            translate([17,51.5,29.8]) rotate([0,-90,90])
-//                color("white") hanger_base_v2();
+        //    translate([0,-26.5,-375.3]) rotate([0,0,0])
+           translate([0,0,-369.75])
+                hk15328_final(); //MT2 
+        //    translate([0,-37,-532]) rotate([0,0,0])
+            translate([0,0,-526.5])
+                hd1160a_final(); //LT1 
+        //    translate([0,-41,-673]) rotate([0,0,0])
+            translate([0,0,-662.75])
+                tss10mg_final(); //LT2
+        //    translate([0,-47,-792.5])
+            translate([0,0,-781.5])
+                max3002_final(); //LT3
+        
+    
+    
+            translate([-16.7,23.3,-162.65]) rotate([90,0,90])
+                color("blue") plate_1();
+            translate([16.5,23.3,-162.65]) rotate([90,0,270])
+                color("blue") plate_1();
+            translate([-11.8,21.45,-332.525]) rotate([90,0,90])
+                color("blue") plate_2();
+            translate([11.8,21.45,-332.525]) rotate([90,0,270])
+                color("blue") plate_2();
+            translate([-11.7,20.9,-494.65]) rotate([90,0,90])
+                color("blue") plate_3();
+            translate([11.7,20.9,-494.65]) rotate([90,0,270])
+                color("blue") plate_3();
+            translate([-8.2,17.85,-634.65]) rotate([90,0,90])
+                color("blue") plate_4();
+            translate([8.2,17.85,-634.65]) rotate([90,0,270])
+                color("blue") plate_4();
+            translate([-7.7,15,-752.9]) rotate([90,0,90])
+                color("blue") plate_5();
+            translate([7.7,15,-752.9]) rotate([90,0,270])
+                color("blue") plate_5();
+            
+            translate([17,51.5,29.8]) rotate([0,-90,90])
+                color("white") hanger_base_v2();
     
         }
         union(){

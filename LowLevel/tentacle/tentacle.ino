@@ -61,7 +61,7 @@ void loop(){
 	    		theta_ref[j] = Serial.parseInt(); //rever
 	    	}
 	    }
-     //incomingByte de confirmação - a definir!
+     //incomingByte de confirmação - ;
 	}
 
 	// ----- reading actual angle ----- //
