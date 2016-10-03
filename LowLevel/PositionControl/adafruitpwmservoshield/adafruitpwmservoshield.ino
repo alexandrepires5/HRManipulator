@@ -25,81 +25,81 @@
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
 // ------------- PULSE ---------------- //
-#define SERVOMIN_HT_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_HT_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_HT_Z  459  // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_HT_Z  106 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_HT_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_HT_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_HT_Y  450 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_HT_Y  115 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_MT_MG_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_MG_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_MT_MG_Z  500 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_MT_MG_Z  120 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_MT_MG_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_MG_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_MT_MG_Y  500 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_MT_MG_Y  120 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_MT_HK_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_HK_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_MT_HK_Z  500 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_MT_HK_Z  115 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_MT_HK_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_HK_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_MT_HK_Y  480 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_MT_HK_Y  107 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_HD_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_HD_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_HD_Z  480 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_HD_Z  110 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_HD_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_HD_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_HD_Y  465 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_HD_Y  105 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_TSS_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_TSS_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_TSS_Z  500 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_TSS_Z  100 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_TSS_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_TSS_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_TSS_Y  420 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_TSS_Y  180 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_MAX_Z  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_MAX_Z  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_MAX_Z  465 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_MAX_Z  115 // this is the 'maximum' pulse length count (out of 4096)
 
-#define SERVOMIN_LT_MAX_Y  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_MAX_Y  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN_LT_MAX_Y  440 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX_LT_MAX_Y  90 // this is the 'maximum' pulse length count (out of 4096)
 
 // ------------------------------------------------------------------------------------ //
 
 
 // ------------- DEGREES ---------------- //
-#define DEG_SERVOMIN_HT_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_HT_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_HT_Z  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_HT_Z  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_HT_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_HT_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_HT_Y  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_HT_Y  160 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_MT_MG_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_MG_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_MT_MG_Z  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_MT_MG_Z  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_MT_MG_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_MG_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_MT_MG_Y  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_MT_MG_Y  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_MT_HK_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_HK_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_MT_HK_Z  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_MT_HK_Z  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_MT_HK_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_HK_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_MT_HK_Y  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_MT_HK_Y  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_HD_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_HD_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_HD_Z  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_HD_Z  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_HD_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_HD_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_HD_Y  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_HD_Y  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_TSS_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_TSS_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_TSS_Z  45 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_TSS_Z  135 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_TSS_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_TSS_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_TSS_Y  45 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_TSS_Y  135 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_MAX_Z  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_MAX_Z  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_MAX_Z  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_MAX_Z  180 // this is the degree for the 'maximum' pulse length count 
 
-#define DEG_SERVOMIN_LT_MAX_Y  150 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_MAX_Y  600 // this is the degree for the 'maximum' pulse length count 
+#define DEG_SERVOMIN_LT_MAX_Y  0 // this is the degree for the 'minimum' pulse length count 
+#define DEG_SERVOMAX_LT_MAX_Y  180 // this is the degree for the 'maximum' pulse length count 
 
 // ------------------------------------------------------------------------------------ //
 // ------------------------------------------------------------------------------------ //
@@ -123,17 +123,24 @@ int potGripper = 0;
 int com_gripper = 0;
 int control_servo = 0;
 int keep_alive = 0;
-int receive_string = 0;
+int receive_string_pwm = 0;
+int receive_string_degrees = 0;
 
 int servomin[11] = {0};
 int servomax[11] = {0};
 int servomin_deg[11] = {0};
 int servomax_deg[11] = {0};
 int servo_hz[11] = {0};
-int theta_ref[11] = {0};
+int pwm_ref[11] = {0};
+
+float theta_ref[11] = {0};
 
 unsigned long act_time;
 unsigned long old_time;
+unsigned long time_act_1;
+unsigned long time_act_2;
+unsigned long old_time_1;
+unsigned long old_time_2;
 
 void setup() {
   while (!Serial);
@@ -201,12 +208,12 @@ void loop() {
           Serial.print("The new servo chosen is ");
           Serial.println(servonum, DEC);
           break;
-        case 'i': //serial control of one servo
+        case 'i': //serial PWM control of one servo
           control_servo = Serial.parseInt();
           pwm.setPWM(servonum,0,control_servo);
           Serial.println(control_servo,DEC);
           break;
-        case 'h': //free control of the servo
+        case 'h': //manual control of one servo
           old_time = millis();
           state = 1;
           Serial.println("Let the games begin.");
@@ -254,43 +261,102 @@ void loop() {
           keep_alive = 1;
           Serial.println("Reset to confortable positions.");
           break;
-        case ':': //receive string with 11 positions
-          receive_string = 1;
+        case '.': //receive string with 11 pwms
+          receive_string_pwm = 1;
+          old_time_1 = millis();
           Serial.println("string string string.");
+          break;
+        case ':': //receive string with 11 positions
+          receive_string_degrees = 1;
+          old_time_2 = millis();
+          Serial.println("string string string.");
+          break;
+        case 'p': //el paquito
+          Serial.println("el paquito.");
+          pwm.setPWM(0,0,map(45,-90,90,106,459));
+          //pwm.setPWM(1,0,map());  
+          pwm.setPWM(2,0,map(45,-90,90,500,120));
+          pwm.setPWM(3,0,map(45,-90,90,500,120));
+          pwm.setPWM(4,0,map(45,-90,90,500,120));
+          pwm.setPWM(5,0,map(45,-90,90,480,280));
+          pwm.setPWM(6,0,map(45,-90,90,480,110));
+          pwm.setPWM(7,0,map(45,-90,90,465,105));
+          pwm.setPWM(8,0,map(40,-45,45,500,100));
+          pwm.setPWM(9,0,map(40,-45,45,420,180));
+          pwm.setPWM(10,0,map(45,-90,90,465,115));
+          pwm.setPWM(11,0,map(45,-90,90,440,90));
+          break;
+        case 'v': //el paquito esta cansado
+          Serial.println("el paquito esta cansado.");
+          for(int p = 0; p < 12; p++){pwm.setPWM(p,0,map(90,servomin_deg[p],servomax_deg[p],servomin[p],servomax[p]));}
+          break;
+        case 't':
+          for(int t =0; t<12;t++) 
+            Serial.println(servomin_deg[t],DEC);
+//            Serial.println(servomax_deg[t],DEC);
+//            Serial.println(servomin[t],DEC);
+//            Serial.println(servomax[t],DEC);
           break;
       default:
         Serial.println("Fuck!"); break;
       }
   }
 
-  if(receive_string == 1){
+  if(receive_string_pwm == 1){
+    time_act_1 = millis();
     for(int j = 0; j < 12; j++)
     {
-      theta_ref[j] = Serial.parseInt(); //rever
+      theta_ref[j] = Serial.parseFloat(); //rever
     }
     if(Serial.read() == ';'){
-      receive_string = 0;
+      receive_string_pwm = 0;
+      Serial.println("Finished.");
+      for(int h = 0; h < 12; h++) Serial.println(pwm_ref[h], DEC);
+      for(int n = 0; n < 12; n++)  pwm.setPWM(n,0,pwm_ref[n]);
+    }
+    if(time_act_1 - old_time_1 > 5000) {
+      receive_string_pwm = 0;
+      Serial.println("Error string.");
+    }
+      
+    
+  }
+
+  
+  if(receive_string_degrees == 1){
+    time_act_2 = millis();
+    for(int j = 0; j < 12; j++)
+    {
+      theta_ref[j] = Serial.parseFloat(); //rever
+    }
+    if(Serial.read() == ';'){
+      receive_string_degrees = 0;
       Serial.println("Finished.");
       for(int h = 0; h < 12; h++) Serial.println(theta_ref[h], DEC);
+      for(int n = 0; n < 12; n++)  pwm.setPWM(n,0,map(theta_ref[n],servomin_deg[n],servomax_deg[n],servomin[n],servomax[n]));
     }
+    if(time_act_2 - old_time_1 > 5000) {
+      receive_string_degrees = 0;
+      Serial.println("Error string.");
+    }
+      
     
-  for(int n = 0; n < 12; n++)  pwm.setPWM(n,0,theta_ref[n]);
   }
   
   if(keep_alive == 1){
     keep_alive = 0;
-    pwm.setPWM(0,0,300);
-    pwm.setPWM(1,0,125);
-    pwm.setPWM(2,0,294);
-    pwm.setPWM(3,0,262);
-    pwm.setPWM(4,0,262);
-    pwm.setPWM(5,0,262);
-    pwm.setPWM(6,0,264);
-    pwm.setPWM(7,0,216);
-    pwm.setPWM(8,0,216);
-    pwm.setPWM(9,0,295);
-    pwm.setPWM(10,0,274);
-    pwm.setPWM(11,0,444);
+    pwm.setPWM(0,0,270);
+    pwm.setPWM(1,0,250);
+    pwm.setPWM(2,0,320);
+    pwm.setPWM(3,0,320);
+    pwm.setPWM(4,0,310);
+    pwm.setPWM(5,0,280);
+    pwm.setPWM(6,0,280);
+    pwm.setPWM(7,0,270);
+    pwm.setPWM(8,0,300);
+    pwm.setPWM(9,0,320);
+    pwm.setPWM(10,0,285);
+    pwm.setPWM(11,0,255);
   }
 
   // ---------------- Opening and Closing the Gripper -------------//
@@ -419,18 +485,18 @@ void set_servo_hz(){
 }
 
 void set_zero_position(){
-//  pwm.setPWM(0, 0, len);
-//  pwm.setPWM(1, 0, len);
-//  pwm.setPWM(2, 0, len);
-//  pwm.setPWM(3, 0, len);
-//  pwm.setPWM(4, 0, len);
-//  pwm.setPWM(5, 0, len);
-  pwm.setPWM(6, 0, 392);
-  pwm.setPWM(7, 0, 320);
-  pwm.setPWM(8, 0, 309);
-  pwm.setPWM(9, 0, 374);
-  pwm.setPWM(10, 0, 349);
-  pwm.setPWM(11, 0, 328);
+    pwm.setPWM(0,0,270);
+    pwm.setPWM(1,0,250);
+    pwm.setPWM(2,0,320);
+    pwm.setPWM(3,0,320);
+    pwm.setPWM(4,0,310);
+    pwm.setPWM(5,0,280);
+    pwm.setPWM(6,0,280);
+    pwm.setPWM(7,0,270);
+    pwm.setPWM(8,0,300);
+    pwm.setPWM(9,0,320);
+    pwm.setPWM(10,0,285);
+    pwm.setPWM(11,0,255);
   analogWrite(r_gripper, 246);  
 }
 
