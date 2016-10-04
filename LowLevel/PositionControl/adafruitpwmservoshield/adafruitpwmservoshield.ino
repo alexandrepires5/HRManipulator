@@ -1,4 +1,4 @@
-/*************************************************** 
+/***************************************************
   This is an example adapted for Adafruit 16-channel PWM & Servo driver
   Servo test - this will drive 16 servos, one after the other
 
@@ -21,512 +21,359 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
-// called this way, it uses the default address 0x40
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-// ------------- PULSE ---------------- //
-#define SERVOMIN_HT_Z  459  // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_HT_Z  106 // this is the 'maximum' pulse length count (out of 4096)
+double servozero[12] = {0};
+double servomin_pwm[12] = {0};
+double servomax_pwm[12] = {0};
+int servomin_deg[12] = {0};
+int servomax_deg[12] = {0};
+double pwm_ref[12] = {0};
+double pwm_act[12] = {0};
 
-#define SERVOMIN_HT_Y  450 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_HT_Y  115 // this is the 'maximum' pulse length count (out of 4096)
+int servonum = 0;
+int aux_servonum = 0;
+double aux_pwm = 0;
+float aux_deg = 0.0;
+int aux;
 
-#define SERVOMIN_MT_MG_Z  500 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_MG_Z  120 // this is the 'maximum' pulse length count (out of 4096)
+double aux_min_pwm = 0;
+double aux_max_pwm = 0;
+float aux_min_deg = 0.0;
+float aux_max_deg = 0.0;
 
-#define SERVOMIN_MT_MG_Y  500 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_MG_Y  120 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_MT_HK_Z  500 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_HK_Z  115 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_MT_HK_Y  480 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_MT_HK_Y  107 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_HD_Z  480 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_HD_Z  110 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_HD_Y  465 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_HD_Y  105 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_TSS_Z  500 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_TSS_Z  100 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_TSS_Y  420 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_TSS_Y  180 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_MAX_Z  465 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_MAX_Z  115 // this is the 'maximum' pulse length count (out of 4096)
-
-#define SERVOMIN_LT_MAX_Y  440 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX_LT_MAX_Y  90 // this is the 'maximum' pulse length count (out of 4096)
-
-// ------------------------------------------------------------------------------------ //
-
-
-// ------------- DEGREES ---------------- //
-#define DEG_SERVOMIN_HT_Z  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_HT_Z  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_HT_Y  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_HT_Y  160 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_MT_MG_Z  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_MG_Z  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_MT_MG_Y  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_MG_Y  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_MT_HK_Z  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_HK_Z  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_MT_HK_Y  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_MT_HK_Y  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_HD_Z  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_HD_Z  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_HD_Y  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_HD_Y  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_TSS_Z  45 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_TSS_Z  135 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_TSS_Y  45 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_TSS_Y  135 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_MAX_Z  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_MAX_Z  180 // this is the degree for the 'maximum' pulse length count 
-
-#define DEG_SERVOMIN_LT_MAX_Y  0 // this is the degree for the 'minimum' pulse length count 
-#define DEG_SERVOMAX_LT_MAX_Y  180 // this is the degree for the 'maximum' pulse length count 
-
-// ------------------------------------------------------------------------------------ //
-// ------------------------------------------------------------------------------------ //
-
-
-uint8_t servonum = 0;
-uint16_t len = 0;
-
-float float_gripper = 0;
+int init_state = 0;
 
 int incomingByte = 0;
-int servo_new = 0;
-int state = 0;
-int potPin = A15;
-int gripper = A14;
-int s_stop = 0;
-int random_iterator = 0;
-int ch_gripper=0;
-int r_gripper = 45;
-int potGripper = 0;
-int com_gripper = 0;
-int control_servo = 0;
-int keep_alive = 0;
-int receive_string_pwm = 0;
-int receive_string_degrees = 0;
 
-int servomin[11] = {0};
-int servomax[11] = {0};
-int servomin_deg[11] = {0};
-int servomax_deg[11] = {0};
-int servo_hz[11] = {0};
-int pwm_ref[11] = {0};
+int gripperPin = 45;
 
-float theta_ref[11] = {0};
+unsigned long is_old_time;
+unsigned long is_actual_time;
 
-unsigned long act_time;
-unsigned long old_time;
-unsigned long time_act_1;
-unsigned long time_act_2;
-unsigned long old_time_1;
-unsigned long old_time_2;
-
-void setup() {
-  while (!Serial);
+void setup(){
+  while(!Serial);
   Serial.begin(9600);
-  Serial.println("HR first test!");
+  Serial.println("Hyper-Redundant by Joaquim Ribeiro");
 
   pwm.begin();
-  
-  pwm.setPWMFreq(50);  // Analog servos run at ~60 Hz updates
 
-  //initialize minimum and maximum values for the shaft motion
-  set_min_max_pulses();
-  //initialize minimum and maximum degrees values for the shaft motion
-  set_min_max_degrees();
-  //zero position
-  set_zero_position();
-  //hz definition
-  set_servo_hz();
+  pwm.setPWMFreq(50);
+  Serial.println("Set min and max pulses.");
+  while(set_min_max_pulses() != 1);
+  Serial.println("Set min and max degrees.");
+  while(set_min_max_degrees() != 1);
+  Serial.println("Set zeros.");
+  while(init_zeros() != 1);
+  Serial.println("Ready set GOOOOO.");
+  init_state = 1;
 }
 
+void loop(){
 
-
-void loop() {
-  // Drive each servo one at a time
-  if (Serial.available() > 0) {
-      // get incoming byte:
+  if (init_state != 0){
+    if (init_state == 1){
+      Serial.println("All servos are going to move to their zero position.");
+      is_old_time = millis();
+      init_state = 2;
+    }
+    else if((init_state == 2) && ((is_actual_time - is_old_time) > 2000)){
+      Serial.println("We are going to open the gripper.");
+      init_state = 3;
+      is_old_time = millis();
+    }
+    else if((init_state == 3) && ((is_actual_time - is_old_time) > 2000)){
+      Serial.println("Finished the initialization procedure.");
+      init_state = 0;
+    }
+  }
+  else if(init_state == 0){
+    if(Serial.available() > 0){
       incomingByte = Serial.read();
       switch(incomingByte){
-        case 'a': //go to servo min
-          pwm.setPWM(servonum, 0, servomin[servonum]);
-          Serial.println("Going to minimum.");
-          break;
-        case 'b': //go to servo max
-          pwm.setPWM(servonum, 0, servomax[servonum]);
-          Serial.println("Going to maximum.");
-          break;
-        case 'c': //update servo min
-          servomin[servonum] = Serial.parseInt();
-          Serial.print("Minimum pulse width updated to ");
-          Serial.println(servomin[servonum], DEC);
-          break;
-        case 'd': //update servo max
-          servomax[servonum] = Serial.parseInt();
-          Serial.print("Maximum pulse width updated to ");
-          Serial.println(servomax[servonum], DEC);
-          break;
-        case 'f': //update degrees servo min
-          servomin_deg[servonum] = Serial.parseInt();
-          Serial.print("Minimum degrees updated to ");
-          Serial.println(servomin[servonum], DEC);
-          break;
-        case 'g': //update degrees servo max
-          servomax_deg[servonum] = Serial.parseInt();
-          Serial.print("Maximum degrees updated to ");
-          Serial.println(servomax_deg[servonum], DEC);
-          break;
-        case 'e': //change servo
-          servo_new = Serial.parseInt();
-          if((servo_new > 11) || (servo_new < 0)){
-            Serial.println("Error choosing the servo");
+        case 'c':
+          aux_servonum = Serial.parseInt();
+          if((aux_servonum < 0) || (aux_servonum > 11)){
+            Serial.println("Error choosing servo.");
             break;
           }
-          servonum = servo_new;
-//          ch_servo = 1;
-          Serial.print("The new servo chosen is ");
-          Serial.println(servonum, DEC);
+          servonum = aux_servonum;
+          Serial.print("New servo choosen is ");
+          Serial.println(servonum);
           break;
-        case 'i': //serial PWM control of one servo
-          control_servo = Serial.parseInt();
-          pwm.setPWM(servonum,0,control_servo);
-          Serial.println(control_servo,DEC);
+        case ':':
+          while(read_string() != 1);
+
           break;
-        case 'h': //manual control of one servo
-          old_time = millis();
-          state = 1;
-          Serial.println("Let the games begin.");
+        case '.':
+          while(read_position() != 1);
           break;
-        case 'r': //rotating all the joints like random
-          random_iterator = 1;
-          Serial.println("Let the random begin.");
-          break;
-        case 'x': //stop
-          s_stop = 1;
-          Serial.println("Let the games end.");
-          break;
-        case 'm': //opening and closing the gripper
-          Serial.println("Just open it.");
-          ch_gripper = 1; break;
-        case 'n': //stopping manual intervention to the gripper
-          Serial.println("No more handjobs.");
-          ch_gripper = 0; break;
-        case 'o': //receiving command to open or close the gripper
-          com_gripper = Serial.parseInt();
-          Serial.println("Serial command to open or close the gripper.");
-          if(com_gripper == 1) analogWrite(r_gripper, 90);
-          else if(com_gripper == 0) analogWrite(r_gripper, 246);
-          else Serial.println("Fail, try again.");
-          break;
-        case 'k': //receiving the percentage to open the gripper
-          float_gripper = Serial.parseFloat();
-          if((float_gripper > 100)||(float_gripper < 0)){
-            Serial.println("Fail, try again.");
+        case 'w':
+          aux = Serial.parseInt();
+          for(int i = 0; i < 12; i++)
+            pwm_ref[i] = map(aux, 0, servomax_deg[i], servozero[i], servomax_pwm[i]);
+            while(go_to_pos_1() != 1);
+            Serial.println("Done like a boss.");
             break;
-          }
-          analogWrite(r_gripper,map(float_gripper,0,90,100,240));
-          Serial.println("Serial command to control the percentage of opening the gripper.");
+        case 'z':
+          for(int i = 0; i < 12; i++)
+            pwm_ref[i] = map(0, 0, servomax_deg[i], servozero[i], servomax_pwm[i]);
+          while(go_to_pos_2() != 1);
+          Serial.println("Return like a boss.");
           break;
-        case 'q': //change pwm frequency
-          pwm.setPWMFreq(Serial.parseInt());
-          Serial.println("Changed pwm frequency.");
+        case 'i':
+          pwm.setPWM(servonum,0,Serial.parseInt());
           break;
-        case 's': //set pwm frequency
-          pwm.setPWMFreq(servo_hz[servonum]);
-          Serial.print("Set the pwm frequency to ");
-          Serial.println(servo_hz[servonum]);
-          break; 
-        case 'z': //reset to initial positions
-          keep_alive = 1;
-          Serial.println("Reset to confortable positions.");
+        case 'r':
+          Serial.println("We are reseting.");
+          init_state = 1;
+          break;        
+        default:
+          Serial.println("Error.");
           break;
-        case '.': //receive string with 11 pwms
-          receive_string_pwm = 1;
-          old_time_1 = millis();
-          Serial.println("string string string.");
-          break;
-        case ':': //receive string with 11 positions
-          receive_string_degrees = 1;
-          old_time_2 = millis();
-          Serial.println("string string string.");
-          break;
-        case 'p': //el paquito
-          Serial.println("el paquito.");
-          pwm.setPWM(0,0,map(45,-90,90,106,459));
-          //pwm.setPWM(1,0,map());  
-          pwm.setPWM(2,0,map(45,-90,90,500,120));
-          pwm.setPWM(3,0,map(45,-90,90,500,120));
-          pwm.setPWM(4,0,map(45,-90,90,500,120));
-          pwm.setPWM(5,0,map(45,-90,90,480,280));
-          pwm.setPWM(6,0,map(45,-90,90,480,110));
-          pwm.setPWM(7,0,map(45,-90,90,465,105));
-          pwm.setPWM(8,0,map(40,-45,45,500,100));
-          pwm.setPWM(9,0,map(40,-45,45,420,180));
-          pwm.setPWM(10,0,map(45,-90,90,465,115));
-          pwm.setPWM(11,0,map(45,-90,90,440,90));
-          break;
-        case 'v': //el paquito esta cansado
-          Serial.println("el paquito esta cansado.");
-          for(int p = 0; p < 12; p++){pwm.setPWM(p,0,map(90,servomin_deg[p],servomax_deg[p],servomin[p],servomax[p]));}
-          break;
-        case 't':
-          for(int t =0; t<12;t++) 
-            Serial.println(servomin_deg[t],DEC);
-//            Serial.println(servomax_deg[t],DEC);
-//            Serial.println(servomin[t],DEC);
-//            Serial.println(servomax[t],DEC);
-          break;
-      default:
-        Serial.println("Fuck!"); break;
       }
+/*
+  // ------------- Instructions list ------------ //
+  a -
+  b -
+  c - change the servomotor
+  d -
+  e -
+  f -
+  g -
+  h -
+  i - serial pwm command to control one servomotor
+  j -
+  k -
+  l - 
+  m -
+  n -
+  o - receiving serial command to open or close the gripper
+  p - 
+  q -
+  r - reset to the initial precedure
+  s -
+  t -
+  u -
+  v -
+  w -
+  x -
+  y -
+  z - go to zero
+  . - receive degree to one servo
+  : - receive degree string
+
+*/
+    }
+  }
+  
+  if(init_state == 2){
+    for(int i = 0; i < 12; i++)
+      pwm_ref[i] = servozero[i];
+    while(go_to_pos_zero() != 1);
+    is_actual_time = millis();
   }
 
-  if(receive_string_pwm == 1){
-    time_act_1 = millis();
-    for(int j = 0; j < 12; j++)
-    {
-      theta_ref[j] = Serial.parseFloat(); //rever
+  else if(init_state == 3){
+    analogWrite(gripperPin, 246);
+    is_actual_time = millis();
+  }
+
+}
+
+int set_min_max_pulses(){
+  // this is the degree for the 'minimum' pulse length count
+  servomin_pwm[0] = 106;  // servo 0
+  servomin_pwm[1] = 115;  // servo 1
+  servomin_pwm[2] = 500;  // servo 2
+  servomin_pwm[3] = 500;  // servo 3
+  servomin_pwm[4] = 500;  // servo 4
+  servomin_pwm[5] = 480;  // servo 5
+  servomin_pwm[6] = 480;  // servo 6
+  servomin_pwm[7] = 465;  // servo 7
+  servomin_pwm[8] = 500;  // servo 8
+  servomin_pwm[9] = 420;  // servo 9
+  servomin_pwm[10] = 465; // servo 10
+  servomin_pwm[11] = 440; // servo 11
+  // this is the degree for the 'maximum' pulse length count
+  servomax_pwm[0] = 459;  // servo 0
+  servomax_pwm[1] = 460;  // servo 1
+  servomax_pwm[2] = 120;  // servo 2
+  servomax_pwm[3] = 120;  // servo 3
+  servomax_pwm[4] = 120;  // servo 4
+  servomax_pwm[5] = 110;  // servo 5
+  servomax_pwm[6] = 110;  // servo 6
+  servomax_pwm[7] = 105;  // servo 7
+  servomax_pwm[8] = 100;  // servo 8
+  servomax_pwm[9] = 180;  // servo 9
+  servomax_pwm[10] = 115; // servo 10
+  servomax_pwm[11] = 90;  // servo 11
+  return 1;
+}
+
+int set_min_max_degrees(){
+  servomin_deg[0] = -90;  // servo 0
+  servomin_deg[1] = -60;  // servo 1
+  servomin_deg[2] = -90;  // servo 2
+  servomin_deg[3] = -90;  // servo 3
+  servomin_deg[4] = -90;  // servo 4
+  servomin_deg[5] = -90;  // servo 5
+  servomin_deg[6] = -90;  // servo 6
+  servomin_deg[7] = -90;  // servo 7
+  servomin_deg[8] = -45;  // servo 8
+  servomin_deg[9] = -45;  // servo 9
+  servomin_deg[10] = -90; // servo 10
+  servomin_deg[11] = -90; // servo 11
+
+  servomax_deg[0] = 90;   // servo 0
+  servomax_deg[1] = 90;   // servo 1
+  servomax_deg[2] = 90;   // servo 2
+  servomax_deg[3] = 90;   // servo 3
+  servomax_deg[4] = 90;   // servo 4
+  servomax_deg[5] = 90;   // servo 5
+  servomax_deg[6] = 90;   // servo 6
+  servomax_deg[7] = 90;   // servo 7
+  servomax_deg[8] = 45;   // servo 8
+  servomax_deg[9] = 45;   // servo 9
+  servomax_deg[10] = 90;  // servo 10
+  servomax_deg[11] = 90;  // servo 11
+  return 1;
+}
+
+int init_zeros(){
+  servozero[0] = 270; // servo 0
+  servozero[1] = 250; // servo 1
+  servozero[2] = 320; // servo 2
+  servozero[3] = 320; // servo 3
+  servozero[4] = 310; // servo 4
+  servozero[5] = 280; // servo 5
+  servozero[6] = 280; // servo 6
+  servozero[7] = 270; // servo 7
+  servozero[8] = 300; // servo 8
+  servozero[9] = 320; // servo 9
+  servozero[10] = 285; // servo 10
+  servozero[11] = 255; // servo 11
+  return 1;
+}
+
+int read_string(){
+  for(int i = 0; i < 12; i++){
+    aux_deg = Serial.parseFloat();
+    if((aux_deg < servomin_deg[i]) || (aux_deg > servomax_deg[i])){
+      Serial.println("Degree exceeds the maximium or the minimum value.");
+      return 1;
     }
-    if(Serial.read() == ';'){
-      receive_string_pwm = 0;
-      Serial.println("Finished.");
-      for(int h = 0; h < 12; h++) Serial.println(pwm_ref[h], DEC);
-      for(int n = 0; n < 12; n++)  pwm.setPWM(n,0,pwm_ref[n]);
+    if(aux_deg <= 0){
+      aux_min_deg = servomin_deg[i];
+      aux_max_deg = 0;
+      aux_min_pwm = servomin_pwm[i];
+      aux_max_pwm = servozero[i];  
     }
-    if(time_act_1 - old_time_1 > 5000) {
-      receive_string_pwm = 0;
-      Serial.println("Error string.");
-    }
+    else if(aux_deg > 0){
+      aux_min_deg = 0;
+      aux_max_deg = servomax_deg[i];
+      aux_min_pwm = servozero[i];
+      aux_max_pwm = servomax_pwm[i];
       
-    
+    }
+    aux_pwm = (double)map(aux_deg, aux_min_deg, aux_max_deg, aux_min_pwm, aux_max_pwm);
+    pwm_ref[i] = aux_pwm;
+    Serial.println(pwm_ref[i]);
   }
-
-  
-  if(receive_string_degrees == 1){
-    time_act_2 = millis();
-    for(int j = 0; j < 12; j++)
-    {
-      theta_ref[j] = Serial.parseFloat(); //rever
-    }
-    if(Serial.read() == ';'){
-      receive_string_degrees = 0;
-      Serial.println("Finished.");
-      for(int h = 0; h < 12; h++) Serial.println(theta_ref[h], DEC);
-      for(int n = 0; n < 12; n++)  pwm.setPWM(n,0,map(theta_ref[n],servomin_deg[n],servomax_deg[n],servomin[n],servomax[n]));
-    }
-    if(time_act_2 - old_time_1 > 5000) {
-      receive_string_degrees = 0;
-      Serial.println("Error string.");
-    }
-      
-    
+  if(Serial.read() == ';'){
+    Serial.println("Finito");
+    while(go_to_pos_2() != 1);
+    return 1;
   }
   
-  if(keep_alive == 1){
-    keep_alive = 0;
-    pwm.setPWM(0,0,270);
-    pwm.setPWM(1,0,250);
-    pwm.setPWM(2,0,320);
-    pwm.setPWM(3,0,320);
-    pwm.setPWM(4,0,310);
-    pwm.setPWM(5,0,280);
-    pwm.setPWM(6,0,280);
-    pwm.setPWM(7,0,270);
-    pwm.setPWM(8,0,300);
-    pwm.setPWM(9,0,320);
-    pwm.setPWM(10,0,285);
-    pwm.setPWM(11,0,255);
-  }
+  return 0;
+}
 
-  // ---------------- Opening and Closing the Gripper -------------//
-  if(ch_gripper){
-    //pwm.setPWM(15,0,map(analogRead(gripper),0,1023,0,700));
-    potGripper = map(analogRead(gripper),0,1023,0,255);
-    analogWrite(r_gripper, potGripper);
-    Serial.println(potGripper, DEC);
+int read_position(){
+  aux_deg = Serial.parseFloat();
+  if(aux_deg <= 0){
+    pwm_ref[servonum] = (double)map(aux_deg, servomin_deg[servonum], 0, servomin_pwm[servonum], servozero[servonum]);
   }
+  else if(aux_deg > 0){
+    pwm_ref[servonum] = (double)map(aux_deg, 0, servomax_deg[servonum], servozero[servonum], servomax_pwm[servonum]);
+  }
+  //pwm_ref[servonum] = (double)map(Serial.parseFloat(), servomin_deg[servonum], servomax_deg[servonum], servomin_pwm[servonum], servomax_pwm[servonum]);
+  incomingByte = Serial.read();
+  if(incomingByte == ';'){
+    while(go_to_pos() != 1);
+    Serial.print(servonum);
+    Serial.print(" - ");
+    Serial.print(pwm_ref[servonum],DEC);
+    Serial.print(" - ");
+    Serial.println(aux_deg);
+    return 1;
+  }
+  return 0;
+}
 
-    // ---------------- Reset to rotating the joints -------------//
-  if(s_stop == 1){
-    state = 0;
-    s_stop = 0;
-    random_iterator = 0;
+int go_to_pos_zero(){
+  for(int i = 0; i < 12; i++){
+    pwm.setPWM(i,0,pwm_ref[i]);
+    pwm_act[i] = pwm_ref[i];
+  }
+  return 1;
+}
+
+int go_to_pos(){
+  for(int i = 0; i < 12; i++){
+    while(pwm_act[i] > pwm_ref[i]){
+      pwm_act[i] --;
+      pwm.setPWM(i,0,pwm_act[i]);
+      delay(10);
+    }
+    while(pwm_act[i] < pwm_ref[i]){
+      pwm_act[i] ++;
+      pwm.setPWM(i,0,pwm_act[i]);
+      delay(10);
+    }
+  }
+  return 1;
+}
+
+int go_to_pos_1(){
+  for(int i = 0; i < 12; i++){
+    while(pwm_act[11-i] > pwm_ref[11-i]){
+      pwm_act[11-i] --;
+      pwm.setPWM(11-i,0,pwm_act[11-i]);
+      delay(10);
+    }
+    while(pwm_act[11-i] < pwm_ref[11-i]){
+      pwm_act[11-i] ++;
+      pwm.setPWM(11-i,0,pwm_act[11-i]);
+      delay(10);
+    }
+  }
+  return 1;
+}
+
+int go_to_pos_2(){
+  int error = 0;
+  while(1){
+    for(int i = 0; i < 12; i++){
+      if(pwm_act[11-i] > pwm_ref[11-i]){
+        pwm_act[11-i] --;
+        pwm.setPWM(11-i,0,pwm_act[11-i]);
+      }
+      else if(pwm_act[11-i] < pwm_ref[11-i]){
+        pwm_act[11-i] ++;
+        pwm.setPWM(11-i,0,pwm_act[11-i]);
+      }
+      else error ++;
+      delay(2);
+    }
+    if(error == 12)
+      return 1;
+    else error = 0;
     
   }
-  
-  // ---------------- Rotating one joint a time -------------//
-  if(state == 1){
-    //receiving data from the potentiometer and rotating the servo likewise
-    act_time = millis();
-    len = map(analogRead(potPin),0,1023,0,700);
-    if(act_time - old_time > 5000){
-      Serial.println(len, DEC);
-      old_time = millis();
-    }
-    pwm.setPWM(servonum, 0, len);
-  }
-
-  // ---------------- Rotating all joints "RANDOM" -------------//
-  if(random_iterator == 1){
-    len = map(analogRead(potPin),0,1023,0,700);
-    for(int i=0; i<12; i++){
-      pwm.setPWM(i, 0, len);
-    }
-  }
-
-//  if(ch_servo == 1){
-//    ch_servo = 0;
-//    if((servonum == 8)||(servonum == 9)){
-//      pwm.setPWMFreq(300);
-//    }
-//    
-//    
-//  }
-
+  return 0;
 }
 
 
-// ---------------- Initialization Pulses -------------//
-void set_min_max_pulses(){
-    //Servomin update
-  servomin[0] = SERVOMIN_HT_Z;
-  servomin[1] = SERVOMIN_HT_Y;
-  servomin[2] = SERVOMIN_MT_MG_Z;
-  servomin[3] = SERVOMIN_MT_MG_Y;
-  servomin[4] = SERVOMIN_MT_HK_Z;
-  servomin[5] = SERVOMIN_MT_HK_Y;
-  servomin[6] = SERVOMIN_LT_HD_Z;
-  servomin[7] = SERVOMIN_LT_HD_Y;
-  servomin[8] = SERVOMIN_LT_TSS_Z;
-  servomin[9] = SERVOMIN_LT_TSS_Y;
-  servomin[10] = SERVOMIN_LT_MAX_Z;
-  servomin[11] = SERVOMIN_LT_MAX_Y;
 
-  //Servomax update
-  servomax[0] = SERVOMAX_HT_Z;
-  servomax[1] = SERVOMAX_HT_Y;
-  servomax[2] = SERVOMAX_MT_MG_Z;
-  servomax[3] = SERVOMAX_MT_MG_Y;
-  servomax[4] = SERVOMAX_MT_HK_Z;
-  servomax[5] = SERVOMAX_MT_HK_Y;
-  servomax[6] = SERVOMAX_LT_HD_Z;;
-  servomax[7] = SERVOMAX_LT_HD_Y;;
-  servomax[8] = SERVOMAX_LT_TSS_Z;
-  servomax[9] = SERVOMAX_LT_TSS_Y;
-  servomax[10] = SERVOMAX_LT_MAX_Z;
-  servomax[11] = SERVOMAX_LT_MAX_Y;
-}
 
-// ---------------- Initialization degrees -------------//
-void set_min_max_degrees(){
-    //Servomin update
-  servomin_deg[0] = DEG_SERVOMIN_HT_Z;
-  servomin_deg[1] = DEG_SERVOMIN_HT_Y;
-  servomin_deg[2] = DEG_SERVOMIN_MT_MG_Z;
-  servomin_deg[3] = DEG_SERVOMIN_MT_MG_Y;
-  servomin_deg[4] = DEG_SERVOMIN_MT_HK_Z;
-  servomin_deg[5] = DEG_SERVOMIN_MT_HK_Y;
-  servomin_deg[6] = DEG_SERVOMIN_LT_HD_Z;
-  servomin_deg[7] = DEG_SERVOMIN_LT_HD_Y;
-  servomin_deg[8] = DEG_SERVOMIN_LT_TSS_Z;
-  servomin_deg[9] = DEG_SERVOMIN_LT_TSS_Y;
-  servomin_deg[10] = DEG_SERVOMIN_LT_MAX_Z;
-  servomin_deg[11] = DEG_SERVOMIN_LT_MAX_Y;
-
-  //Servomax update
-  servomax_deg[0] = DEG_SERVOMAX_HT_Z;
-  servomax_deg[1] = DEG_SERVOMAX_HT_Y;
-  servomax_deg[2] = DEG_SERVOMAX_MT_MG_Z;
-  servomax_deg[3] = DEG_SERVOMAX_MT_MG_Y;
-  servomax_deg[4] = DEG_SERVOMAX_MT_HK_Z;
-  servomax_deg[5] = DEG_SERVOMAX_MT_HK_Y;
-  servomax_deg[6] = DEG_SERVOMAX_LT_HD_Z;;
-  servomax_deg[7] = DEG_SERVOMAX_LT_HD_Y;;
-  servomax_deg[8] = DEG_SERVOMAX_LT_TSS_Z;
-  servomax_deg[9] = DEG_SERVOMAX_LT_TSS_Y;
-  servomax_deg[10] = DEG_SERVOMAX_LT_MAX_Z;
-  servomax_deg[11] = DEG_SERVOMAX_LT_MAX_Y;
-}
-
-void set_servo_hz(){
-  servo_hz[0] = 50;
-  servo_hz[1] = 50;
-  servo_hz[2] = 330;
-  servo_hz[3] = 330;
-  servo_hz[4] = 50;
-  servo_hz[5] = 50;
-  servo_hz[6] = 50;
-  servo_hz[7] = 50;
-  servo_hz[8] = 330;
-  servo_hz[9] = 330;
-  servo_hz[10] = 50;
-  servo_hz[11] = 50;
-}
-
-void set_zero_position(){
-    pwm.setPWM(0,0,270);
-    pwm.setPWM(1,0,250);
-    pwm.setPWM(2,0,320);
-    pwm.setPWM(3,0,320);
-    pwm.setPWM(4,0,310);
-    pwm.setPWM(5,0,280);
-    pwm.setPWM(6,0,280);
-    pwm.setPWM(7,0,270);
-    pwm.setPWM(8,0,300);
-    pwm.setPWM(9,0,320);
-    pwm.setPWM(10,0,285);
-    pwm.setPWM(11,0,255);
-  analogWrite(r_gripper, 246);  
-}
-
-// you can use this function if you'd like to set the pulse length in seconds
-// e.g. setServoPulse(0, 0.001) is a ~1 millisecond pulse width. its not precise!
-//void setServoPulse(uint8_t n, double pulse) {
-//  double pulselength;
-//  
-//  pulselength = 1000000;   // 1,000,000 us per second
-//  pulselength /= 60;   // 60 Hz
-//  Serial.print(pulselength); Serial.println(" us per period"); 
-//  pulselength /= 4096;  // 12 bits of resolution
-//  Serial.print(pulselength); Serial.println(" us per bit"); 
-//  pulse *= 1000;
-//  pulse /= pulselength;
-//  Serial.println(pulse);
-//  pwm.setPWM(n, 0, pulse);
-//}
-
-//  Serial.println(servonum);
-//  for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
-//    pwm.setPWM(servonum, 0, pulselen);
-//  }
-//
-//  delay(500);
-//  for (uint16_t pulselen = SERVOMAX; pulselen > SERVOMIN; pulselen--) {
-//    pwm.setPWM(servonum, 0, pulselen);
-//  }
-//
-//  delay(500);
-//
-//  servonum ++;
-//  if (servonum > 7) servonum = 0;
