@@ -59,13 +59,13 @@ void setup(){
   pwm.begin();
 
   pwm.setPWMFreq(50);
-  Serial.println("Set min and max pulses.");
+//  Serial.println("Set min and max pulses.");
   while(set_min_max_pulses() != 1);
-  Serial.println("Set min and max degrees.");
+//  Serial.println("Set min and max degrees.");
   while(set_min_max_degrees() != 1);
-  Serial.println("Set zeros.");
+//  Serial.println("Set zeros.");
   while(init_zeros() != 1);
-  Serial.println("Ready set GOOOOO.");
+//  Serial.println("Ready set GOOOOO.");
   init_state = 1;
 }
 
@@ -73,17 +73,17 @@ void loop(){
 
   if (init_state != 0){
     if (init_state == 1){
-      Serial.println("All servos are going to move to their zero position.");
+//      Serial.println("All servos are going to move to their zero position.");
       is_old_time = millis();
       init_state = 2;
     }
     else if((init_state == 2) && ((is_actual_time - is_old_time) > 2000)){
-      Serial.println("We are going to open the gripper.");
+//      Serial.println("We are going to open the gripper.");
       init_state = 3;
       is_old_time = millis();
     }
     else if((init_state == 3) && ((is_actual_time - is_old_time) > 2000)){
-      Serial.println("Finished the initialization procedure.");
+//      Serial.println("Finished the initialization procedure.");
       init_state = 0;
     }
   }
@@ -94,12 +94,12 @@ void loop(){
         case 'c':
           aux_servonum = Serial.parseInt();
           if((aux_servonum < 0) || (aux_servonum > 11)){
-            Serial.println("Error choosing servo.");
+//            Serial.println("Error choosing servo.");
             break;
           }
           servonum = aux_servonum;
-          Serial.print("New servo choosen is ");
-          Serial.println(servonum);
+//          Serial.print("New servo choosen is ");
+//          Serial.println(servonum);
           break;
         case ':':
           while(read_string() != 1);
@@ -112,24 +112,32 @@ void loop(){
           aux = Serial.parseInt();
           for(int i = 0; i < 12; i++)
             pwm_ref[i] = map(aux, 0, servomax_deg[i], servozero[i], servomax_pwm[i]);
-            while(go_to_pos_1() != 1);
-            Serial.println("Done like a boss.");
+            while(go_to_pos_2() != 1);
+//            Serial.println("Done like a boss.");
             break;
         case 'z':
           for(int i = 0; i < 12; i++)
             pwm_ref[i] = map(0, 0, servomax_deg[i], servozero[i], servomax_pwm[i]);
-          while(go_to_pos_2() != 1);
-          Serial.println("Return like a boss.");
+          while(go_to_pos() != 1);
+//          Serial.println("Return like a boss.");
           break;
         case 'i':
           pwm.setPWM(servonum,0,Serial.parseInt());
           break;
         case 'r':
-          Serial.println("We are reseting.");
+//          Serial.println("We are reseting.");
           init_state = 1;
+          break;
+        case 'q':
+          for(int q = 0; q < 12; q++){
+            Serial.print(":");
+            Serial.print(pwm_act[q]);
+            Serial.print(" ");
+          }
+          Serial.print(";");
           break;        
         default:
-          Serial.println("Error.");
+//          Serial.println("Error.");
           break;
       }
 /*
@@ -260,7 +268,7 @@ int read_string(){
   for(int i = 0; i < 12; i++){
     aux_deg = Serial.parseFloat();
     if((aux_deg < servomin_deg[i]) || (aux_deg > servomax_deg[i])){
-      Serial.println("Degree exceeds the maximium or the minimum value.");
+//      Serial.println("Degree exceeds the maximum or the minimum value.");
       return 1;
     }
     if(aux_deg <= 0){
@@ -278,10 +286,10 @@ int read_string(){
     }
     aux_pwm = (double)map(aux_deg, aux_min_deg, aux_max_deg, aux_min_pwm, aux_max_pwm);
     pwm_ref[i] = aux_pwm;
-    Serial.println(pwm_ref[i]);
+//    Serial.println(pwm_ref[i]);
   }
   if(Serial.read() == ';'){
-    Serial.println("Finito");
+//    Serial.println("Finito");
     while(go_to_pos_2() != 1);
     return 1;
   }
@@ -301,11 +309,11 @@ int read_position(){
   incomingByte = Serial.read();
   if(incomingByte == ';'){
     while(go_to_pos() != 1);
-    Serial.print(servonum);
-    Serial.print(" - ");
-    Serial.print(pwm_ref[servonum],DEC);
-    Serial.print(" - ");
-    Serial.println(aux_deg);
+//    Serial.print(servonum);
+//    Serial.print(" - ");
+//    Serial.print(pwm_ref[servonum],DEC);
+//    Serial.print(" - ");
+//    Serial.println(aux_deg);
     return 1;
   }
   return 0;

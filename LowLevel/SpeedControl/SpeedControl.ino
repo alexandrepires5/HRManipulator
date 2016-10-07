@@ -1,16 +1,4 @@
-/* Analog Read to LED
- * ------------------ 
- *
- * turns on and off a light emitting diode(LED) connected to digital  
- * pin 13. The amount of time the LED will be on and off depends on
- * the value obtained by analogRead(). In the easiest case we connect
- * a potentiometer to analog pin 2.
- *
- * Created 1 December 2005
- * copyleft 2005 DojoDave <http://www.0j0.org>
- * http://arduino.berlios.de
- *
- */
+
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include "utility/Adafruit_MS_PWMServoDriver.h"
@@ -21,7 +9,7 @@ Adafruit_MotorShield shieldMed(0x61); // 00001
 Adafruit_MotorShield shieldBot(0x60); // 00000
 
 //motor init
-Adafruit_DCMotor *M1_top = shieldTop.getMotor(1);
+Adafruit_DCMotor *M1_top = shieldTop.getMotor(3);
 
 int state = 0;
 bool ch_speed_st = 0;
@@ -73,6 +61,9 @@ void loop() {
         break;
       case 's': // change speed;
         ch_speed_st = !ch_speed_st;M1_top->run(RELEASE);
+        break;
+      case ':': // read string with value to rotate
+        while(read_position) != 1);
         break;
       default: 
       Serial.println("Fuck!"); break;
@@ -132,5 +123,31 @@ val = analogRead(posPin);
 
 }
 
+int read_position(){
+  pos_ref = Serial.parseFloat();
+  pos_actual = analogRead(
+}
+
+int go_to_pos(){
+
+  pos_act = analogRead(potPin);
+  pos_error = pos_ref - pos_act;
+
+  if(pos_error > dist_b_error){
+    M1_top->setSpeed(speed_f);
+    M1_top->run(FORWARD); 
+  }
+  else if(pos_error < -dist_b_error){
+    M1_top->setSpeed(speed_f);
+    M1_top->run(BACKWARD)
+  }
+  else if((pos_error > dist_s_error) || (pos_error < -dist_s_error){
+    M1_top->setSpeed(speed_l);
+  }
+  else if((pos_error < dist_error) || (pos_error > -dist_error){
+    M1_top->run(RELEASE);
+    return 1;
+  }  
+}
 
 
