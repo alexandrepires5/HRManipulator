@@ -54,7 +54,7 @@ unsigned long is_actual_time;
 void setup(){
   while(!Serial);
   Serial.begin(9600);
-  Serial.println("Hyper-Redundant by Joaquim Ribeiro");
+  //Serial.println("Hyper-Redundant by Joaquim Ribeiro");
 
   pwm.begin();
 
@@ -131,7 +131,17 @@ void loop(){
         case 'q':
           for(int q = 0; q < 12; q++){
             Serial.print(":");
-            Serial.print(pwm_act[q]);
+            int zero_aux = servozero[q];
+            if(pwm_act[q] > zero_aux){
+              int max_aux = servomax_pwm[q];
+              int max_aux_deg = servomax_deg[q];
+              Serial.print(map(pwm_act[q],zero_aux, max_aux,0,max_aux_deg));
+            }
+            else if(pwm_act[q] <= zero_aux){
+              int min_aux = servomin_pwm[q];
+              int min_aux_deg = servomin_deg[q];
+              Serial.print(map(pwm_act[q],min_aux,zero_aux,min_aux_deg,0));
+            }
             Serial.print(" ");
           }
           Serial.print(";");
