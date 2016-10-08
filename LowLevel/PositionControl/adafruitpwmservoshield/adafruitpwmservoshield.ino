@@ -129,8 +129,8 @@ void loop(){
           init_state = 1;
           break;
         case 'q':
+          Serial.print(":");
           for(int q = 0; q < 12; q++){
-            Serial.print(":");
             int zero_aux = servozero[q];
             if(pwm_act[q] > zero_aux){
               int max_aux = servomax_pwm[q];
