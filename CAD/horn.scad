@@ -122,6 +122,36 @@ module horn_max3002_hinge(){
       }
 }
 
+module horn_single_tgys901d(){
+    linear_extrude(height = 2.5, center = false)
+      hull(){
+       translate([20-6/2, 0, 0]) circle(d = 6, $fn = 32);
+       circle(d = 9, $fn = 32);
+      }  
+}
+module horn_single_tgys901d_hinge(){
+  linear_extrude(height = 2.5, center = false){
+      hull(){
+       translate([20-6/2+1, 0, 0]) circle(d = 6+0.5, $fn = 32);
+       circle(d = 11+0.5, $fn = 32);
+      }
+      circle(d = 15, $fn = 32);}
+}
+module horn_tgys901d_hinge(){
+    for(i=[0:3])
+    {
+        rotate([0, 0, 90*i])
+        horn_single_tgys901d_hinge();
+    }
+} 
+
+module horn_tgys901d(){
+    for(i=[0:3])
+    {
+        rotate([0, 0, 90*i])
+        horn_single_tgys901d_hinge();
+    }
+}     
 //horn_s8330m();
 //translate([0,20,0]) 
 //    horn_mg946r();
@@ -131,3 +161,4 @@ module horn_max3002_hinge(){
 //    horn_tss10mg();
 //translate([-20,0,0])
 //    horn_hd1160a();
+//horn_tgys901d();

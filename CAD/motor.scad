@@ -29,6 +29,21 @@ module motor_mg946r(){
         color("black") horn_mg946r();
 }
 
+module motor_tgys901d(){
+    color("black") cube(size = [tgys901d_width,tgys901d_length,tgys901d_partial_height], center = true);
+    
+    translate([0,0,(tgys901d_height - tgys901d_partial_height/2)+tgys901d_height_fh/2]) 
+         color("black") cube(size = [tgys901d_width,tgys901d_total_length,tgys901d_height_fh], center = true);
+    
+    translate([0,tgys901d_length*1/2-tgys901d_length_to_shaft,tgys901d_partial_height/2]) rotate([0,0,$t*180]) 
+        color("white") {cylinder(d=12, h = 2);
+            cylinder(d=9, h=tgys901d_shaft_height);
+            };     
+    
+    translate([0,tgys901d_length*1/2-tgys901d_length_to_shaft,( tgys901d_partial_height/2+tgys901d_shaft_height)]) rotate([0,0,$t*180])
+        color("black") horn_tgys901d();
+}
+
 module motor_hk15328(){
     color("black") cube(size = [hk15328_width,hk15328_length,hk15328_partial_height], center = true);
     
@@ -91,8 +106,9 @@ module motor_max3002(){
 }
 
 //motor_mg946r();
-//translate([70,0,0]) 
-//    motor_s8330m();
+//rotate([90,0,0]) motor_s8330m();
+//translate([0,0,100]) 
+//rotate([90,0,0])    motor_s8330m();
 //translate([-70,0,0])
 //    motor_hk15328();
 //translate([0,-70,0]);
@@ -100,3 +116,4 @@ module motor_max3002(){
 //translate([0,70,0])
 //    motor_hd1160a();
 //motor_max3002();
+//motor_tgys901d();

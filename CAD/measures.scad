@@ -80,6 +80,44 @@ mg946r_horn_head_d2 = 3;
 //mg946r_horn_length = 39-7;
 /* ----------------------------- */
 
+/* ------ tgys901d ------ */
+//servo dimensions
+tgys901d_total_height = 43;
+tgys901d_length = 40.5;
+tgys901d_partial_height = 37.5;
+tgys901d_width = 19.5; //D
+tgys901d_total_length = 54;
+tgys901d_height = 26.5;
+tgys901d_height_fh = 3;
+tgys901d_length_to_shaft = 10;
+
+//shaft dimensions
+tgys901d_shaft_diameter = 5;
+tgys901d_shaft_height = 5;
+
+tgys901d_bottom_cylinder_diameter = 0.384*tgys901d_width; //sleeve
+//tgys901d_bottom_cylinder_height = 4.8; //sleeve
+tgys901d_bottomhinge_hole = tgys901d_bottom_cylinder_diameter+0.4;
+
+//servo_fixation_holes
+tgys901d_fixation_hole_x = 3;
+tgys901d_fixation_hole_y = 0;
+tgys901d_fixation_hole_z = 5;
+tgys901d_hole_diameter = 2.5;
+
+//horn
+tgys901d_horn_height = 2;
+tgys901d_horn_length = 20;
+tgys901d_horn_1stcircle = 6;
+tgys901d_horn_2ndcircle = 11;
+tgys901d_horn_bigscrew = 2.5;
+tgys901d_horn_smallscrew = 2.5;
+tgys901d_horn_smallscrew_length = 19;
+tgys901d_horn_head_d1 = 2;
+tgys901d_horn_head_d2 = 3;  
+//tgys901d_horn_length = 39-7;
+/* ----------------------------- */
+
 /* ------ mg995 ------ */
 //servo dimensions
 mg995_total_height = 42;
@@ -154,35 +192,6 @@ hk15328_horn_head_d2 = 3;
 /* ----------------------------- */  
 /* ----------------------------- */ 
 
-/* ------ tgys901d ------ */
-//servo dimensions
-tgys901d_width = 12; //D
-tgys901d_height = 29; //C
-tgys901d_length = 23; //B 
-tgys901d_total_length = 32; //E
-tgys901d_total_height = 32; //A
-tgys901d_bottom_cylinder_diameter = 0.384*tgys901d_width; //sleeve
-//tgys901d_bottom_cylinder_height = 4.8; //sleeve
-tgys901d_bottomhinge_hole = tgys901d_bottom_cylinder_diameter+0.4;
-
-//servo_fixation_holes
-/*tgys901d_fixation_hole_x = ;
-tgys901d_fixation_hole_y = ;
-tgys901d_fixation_hole_z = ;
-tgys901d_hole_diameter = ;
-*/
-//horn
-tgys901d_horn_height = 3;
-tgys901d_horn_1stcircle = 4.5;
-tgys901d_horn_2ndcircle = 6.5;
-tgys901d_horn_length = 16;
-tgys901d_horn_bigscrew = 1.5;
-tgys901d_horn_smallscrew = 1;
-tgys901d_horn_smallscrew_length = 10.5;
-tgys901d_horn_head_d1 = 2;
-tgys901d_horn_head_d2 = 3;
-    
-/* ----------------------------- */ 
 
 
 //-------------------- LT --------------//
