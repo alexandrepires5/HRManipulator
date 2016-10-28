@@ -1559,21 +1559,21 @@ module servo_sleeve_tgys901d(type = "side_hole", hole = "two"){
 	    // Servo fixation hole
 	    translate([2.5, 5.5, 19/2-5])
 	    rotate([90, 0, 0])
-	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
+	    cylinder(d = 2.5, h = 15, $fn = 32);
 	
 	    // Servo fixation hole
 	    translate([-servo_L - 2.5, 5.5, 19/2-5])
 	    rotate([90, 0, 0])
-	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
+	    cylinder(d = 2.5, h = 15, $fn = 32);
 	    
         translate([2.5, 5.5, -19/2+5])
 	    rotate([90, 0, 0])
-	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
+	    cylinder(d = 2.5, h = 15, $fn = 32);
 	
 	    // Servo fixation hole
 	    translate([-servo_L - 2.5, 5.5, -19/2+5])
 	    rotate([90, 0, 0])
-	    cylinder(d = servo_hole_diameter, h = 15, $fn = 32);
+	    cylinder(d = 2.5, h = 15, $fn = 32);
         
          // Servo cable carving (side start)
 	    translate([-servo_L - 5, -servo_H - 1.4 + 1e-3, -8/2])
@@ -1613,7 +1613,7 @@ module servo_sleeve_tgys901d(type = "side_hole", hole = "two"){
 
 module servo_hinge_tgys901d(hinge_servo = "tgys901d"){
     support_width_sleeve = (tgys901d_total_length - tgys901d_length)/2 + 2;
-    support_z_hinge = tgys901d_width + 0.25;
+    support_z_hinge = tgys901d_width + 0.5;
     support_width_hinge = (tgys901d_total_length - tgys901d_length)/2 + 2;
     servo_axis_clear = (tgys901d_horn_length -tgys901d_horn_1stcircle/2 + 7);
     servo_HTot = tgys901d_total_height+4 ; //A
@@ -1719,10 +1719,10 @@ module hd1160a_final(){
 //    motor_hd1160a();
 //    translate([0,-11,64.75]) rotate([90,0,-90])
 //        color("white") hinge_sleeve_alt_hinge_hd1160a();
-//    translate([0,-14.5,5]) rotate([90,0,-90])
-//         color("white") sleeve_hinge_hdtgy("two");
-//    translate([0,-42-11.5,-65]) rotate([90,0,-90])
-//        color("white") hinge_sleeve_alt_sleeve_hdtgy();
+    translate([0,-14.5,5]) rotate([90,0,-90])
+         color("white") sleeve_hinge_hdtgy("two");
+    translate([0,-42-11.5,-65]) rotate([90,0,-90])
+        color("white") hinge_sleeve_alt_sleeve_hdtgy();
 //    translate([0,-68,28.5]) rotate([90,0,0]) 
 //        translate([0,-130.5,-67.25]) rotate([90,0,-90])
 //        color("white") servo_sleeve_tgys901d();
@@ -1770,8 +1770,8 @@ module servo_render(){
 //           translate([0,0,-369.75])
 //                hk15328_final(); //MT2 
 //        //    translate([0,-37,-532]) rotate([0,0,0])
-//            translate([0,0,-526.5])
-//                hd1160a_final(); //LT1 
+            translate([0,0,-526.5])
+                hd1160a_final(); //LT1 
 ////        //    translate([0,-41,-673]) rotate([0,0,0])
 //            translate([0,0,-673.4])
 //                tss10mg_final(); //LT2
